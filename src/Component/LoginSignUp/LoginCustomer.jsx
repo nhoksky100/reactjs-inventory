@@ -2,14 +2,9 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { NavLink, Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-// import LoginFacebook from './LoginFacebook';
-// import LoginGoogle from './LoginGoogle';
 
 import Cookies from 'universal-cookie';
 import { setCookie } from '../setCookie';
-// import { connect } from 'react-redux';
-
-// import { encodeData,decodeData } from './CookieUtils'; // Đường dẫn đến file chứa hàm getDecodedCookie
 
 const getdataAccount = () => axios.get('/getAccount').then((res) => res.data)
 
@@ -130,8 +125,9 @@ class LoginCustomer extends Component {
     handleClickLogin = () => {
         const { dataAccount, username, password } = this.state;
 
-        // console.log(stringtoslug(username),'username');
+       
         console.log(dataAccount, 'dataAccount a');
+        console.log(dataAccount, 'dataAccount b');
         let flagLogin = false;
 
         if (!dataAccount || dataAccount.length === 0) {
