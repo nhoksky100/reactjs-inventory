@@ -63,10 +63,10 @@ class LoginCustomer extends Component {
     }
     getData = () => {
         getdataAccount().then((res) => {
-            // console.log(res, 'res');
+             console.log(res, 'res');
             if (this._isMounted) {
 
-                this.setState({ dataAccount: res.rows })
+                this.setState({ dataAccount: res })
             }
         })
 
@@ -131,7 +131,7 @@ class LoginCustomer extends Component {
         const { dataAccount, username, password } = this.state;
 
         // console.log(stringtoslug(username),'username');
-        console.log(dataAccount, 'dataAccount');
+        console.log(dataAccount, 'dataAccount a');
         let flagLogin = false;
 
         if (!dataAccount || dataAccount.length === 0) {
