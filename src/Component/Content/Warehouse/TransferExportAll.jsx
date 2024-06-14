@@ -20,10 +20,10 @@ import { dataSearch, dataSearchValue, isDataSearch, searchDatetimeEnd, searchDat
 const fontName = 'Arial';
 const fontFile = '../font/arial.ttf'; // Đường dẫn đến tập tin font chữ
 const fontEncoding = 'Unicode'; // Bảng mã của font chữ
-const getdataRequest = () => axios.get('/getRequestTransfer').then((res) => res.data)
-const getdataMember = () => axios.get('/getMember').then((res) => res.data)
-const getdataRequestTransferHistory = () => axios.get('/getRequestTransferHistory').then((res) => res.data)
-const getdataTransferExportApprover = () => axios.get('/getTransferExportApprover').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTransfer').then((res) => res.data)
+const getdataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
+const getdataRequestTransferHistory = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTransferHistory').then((res) => res.data)
+const getdataTransferExportApprover = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getTransferExportApprover').then((res) => res.data)
 
 class TransferExportAll extends Component {
     constructor(props) {
