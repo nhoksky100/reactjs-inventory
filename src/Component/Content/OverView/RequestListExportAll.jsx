@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Pagination from "react-js-pagination";
 import RequestAmountOrder from './RequestAmountOrder';
 
-const getdataRequest = () => axios.get('/getRequestTransfer').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTransfer').then((res) => res.data)
 
 
 class RequestListExportAll extends Component {
