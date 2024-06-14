@@ -157,7 +157,7 @@ class AddAccount extends Component {
             const accountDateCreated = UpdateDateTime();
             const accountDateUpdate = UpdateDateTime();
             if (this._isMounted) {
-                axios.post('/addAccount', {
+                axios.post(process.env.REACT_APP_BACKEND_URL+'/addAccount', {
                     id, accountCode, accountUserName, accountPassword, accountEmail, accountPermission,
                     accountDateCreated, accountDateUpdate
                 }).then(response => {
