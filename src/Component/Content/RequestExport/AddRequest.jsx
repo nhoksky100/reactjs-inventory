@@ -353,7 +353,7 @@ class AddRequest extends Component {
                     // const existingDateCreated = existingData ? existingData.dateCreated : null;
 
                     // Tạo promise cho mỗi dòng
-                    const promise = axios.post('/addTransferExportRequest', {
+                    const promise = axios.post(process.env.REACT_APP_BACKEND_URL+'/addTransferExportRequest', {
                         id: id, // Sử dụng rowAddIndex trực tiếp
                         warehouseCode,
                         warehouseItemsCode,
@@ -377,7 +377,7 @@ class AddRequest extends Component {
                     }).then(response => {
                         if (newRowDataListTeamp.length > 0) {
                             newRowDataListTeamp.map((value, key) => {
-                                axios.post('/removeTransferExportRequestTeamp', { id: value.id })
+                                axios.post(process.env.REACT_APP_BACKEND_URL+'/removeTransferExportRequestTeamp', { id: value.id })
                                     .catch(error => {
                                         console.error("Đã xảy ra lỗi khi xóa dữ liệu:", error);
                                     });
@@ -387,7 +387,7 @@ class AddRequest extends Component {
                         let idNotification = this.refeshRandomId(dataNotification)
 
                         const nameItems = 'Mặt hàng ' + requestTransferItemsName
-                        axios.post('/addNotification', {
+                        axios.post(process.env.REACT_APP_BACKEND_URL+'/addNotification', {
                             id: idNotification, idRequest: id, idMember: idAccount, title: 'Đơn Xuất hàng đang chờ duyệt',
                             content: nameItems, maker: memberName, department: memberDepartment, status: 'Chờ duyệt', isApproved: 0,
                             pointApprovedInto: 0,
@@ -467,7 +467,7 @@ class AddRequest extends Component {
                     // const existingDateCreated = existingData ? existingData.dateCreated : null;
                     let promise;
                     if (isNewRowData) {
-                        promise = axios.post('/updateTransferExportRequestTemp', {
+                        promise = axios.post(process.env.REACT_APP_BACKEND_URL+'/updateTransferExportRequestTemp', {
                             id: id, // Sử dụng rowAddIndex trực tiếp
                             warehouseCode,
                             warehouseItemsCode,
@@ -505,7 +505,7 @@ class AddRequest extends Component {
 
                     } else {
                         // Tạo promise cho mỗi dòng
-                        promise = axios.post('/addTransferExportRequestTemp', {
+                        promise = axios.post(process.env.REACT_APP_BACKEND_URL+'/addTransferExportRequestTemp', {
                             id: id, // Sử dụng rowAddIndex trực tiếp
                             warehouseCode,
                             warehouseItemsCode,
@@ -530,7 +530,7 @@ class AddRequest extends Component {
                         }).then(response => {
                             // if (newRowDataListTeamp.length > 0) {
                             //     newRowDataListTeamp.map((value, key) => {
-                            //         axios.post('/removeTransferExportRequestTeamp', { id: value.id })
+                            //         axios.post(process.env.REACT_APP_BACKEND_URL+'/removeTransferExportRequestTeamp', { id: value.id })
                             //             .catch(error => {
                             //                 console.error("Đã xảy ra lỗi khi xóa dữ liệu:", error);
                             //             });
@@ -736,7 +736,7 @@ class AddRequest extends Component {
 
     // Hàm xóa dòng
     removeOrder = (id) => {
-        axios.post('/removeTransferExportRequestTeamp', { id })
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/removeTransferExportRequestTeamp', { id })
             .then(response => {
                 // Xử lý kết quả nếu cần
                 const { newRowDataList } = this.state;
