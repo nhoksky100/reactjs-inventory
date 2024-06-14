@@ -214,8 +214,9 @@ const FormAccountCustomer = () => {
 
     const isShowForm = (tokenObj) => {
         if (pathUrl && typeof pathUrl === 'string' && dataLoaded && permission) {
+            console.log(pathUrl ,'pathUrl');
             switch (pathUrl) {
-                case process.env.REACT_APP_BACKEND_URL+'/':
+                case '/':
                     return <ContentOverView tokenObj={tokenObj} />;
                 case process.env.REACT_APP_BACKEND_URL+'/warehouse':
                     if (permission === 'Lãnh đạo' || permission === 'Thành viên kho' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
