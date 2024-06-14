@@ -7,9 +7,9 @@ import { toast } from 'react-toastify';
 import bcrypt from 'bcryptjs';
 import Pagination from 'react-js-pagination';
 
-const getdataRequest = () => axios.get('/getRequest').then((res) => res.data)
-const getdataMember = () => axios.get('/getMember').then((res) => res.data)
-const getdataApproveOrder = () => axios.get('/getApproveOrder').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequest').then((res) => res.data)
+const getdataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
+const getdataApproveOrder = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getApproveOrder').then((res) => res.data)
 
 class RequestListApproved extends Component {
     constructor(props) {
