@@ -10,11 +10,11 @@ import bcrypt from 'bcryptjs';
 import Select from 'react-select';
 import PurchaseFormMenu from './PurchaseFormMenu.jsx';
 
-const getdataRequest = () => axios.get('/getRequest').then((res) => res.data)
-const getdataMember = () => axios.get('/getMember').then((res) => res.data)
-const getdataApproveOrder = () => axios.get('/getApproveOrder').then((res) => res.data)
-const getdataSupplier = () => axios.get('/getSupplier').then((res) => res.data)
-const getdataNotification = () => axios.get('/getNotification').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequest').then((res) => res.data)
+const getdataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
+const getdataApproveOrder = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getApproveOrder').then((res) => res.data)
+const getdataSupplier = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getSupplier').then((res) => res.data)
+const getdataNotification = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getNotification').then((res) => res.data)
 
 class PurchaseRequestNotApprove extends Component {
     constructor(props) {
