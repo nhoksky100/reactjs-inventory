@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';
 
-const getdataNotification = () => axios.get('/getNotification').then((res) => res.data)
-const getDataImageProfile = () => axios.get('/imageFile').then((res) => res.data)
+const getdataNotification = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getNotification').then((res) => res.data)
+const getDataImageProfile = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/imageFile').then((res) => res.data)
 class NotificationList extends Component {
     constructor(props) {
         super(props);
