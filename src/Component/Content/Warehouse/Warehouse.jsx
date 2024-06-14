@@ -13,7 +13,7 @@ import FilterTime from '../../FilterTime.jsx';
 import { SearchDate } from '../../SearchDate.jsx';
 import { dataSearch, dataSearchValue, isDataSearch, searchDatetimeEnd, searchDatetimeStart } from '../../../StoreRcd.jsx';
 
-const getdataWarehouse = () => axios.get('/getWarehouse').then((res) => res.data)
+const getdataWarehouse = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getWarehouse').then((res) => res.data)
 
 
 class Warehouse extends Component {
