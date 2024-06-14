@@ -3,9 +3,9 @@ import React, { Component, Fragment } from 'react';
 import { UpdateDateTime } from '../../UpdateDateTime';
 import RequestListForm from './RequestListForm';
 import axios from 'axios';
-const getdataMember = () => axios.get('/getMember').then((res) => res.data)
-const getdataItemsList = () => axios.get('/getItemsList').then((res) => res.data)
-const getdataIntoWarehouse = () => axios.get('/getIntoWarehouse').then((res) => res.data)
+const getdataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
+const getdataItemsList = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getItemsList').then((res) => res.data)
+const getdataIntoWarehouse = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getIntoWarehouse').then((res) => res.data)
 
 class ContentOverView extends Component {
   constructor(props) {
