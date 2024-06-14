@@ -211,7 +211,7 @@ class CreateWarehouseAreaList extends Component {
             })
 
             // Thực hiện lưu dữ liệu dưới dạng axios
-            axios.post('/updatedataCreateWarehouse', {
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/updatedataCreateWarehouse', {
                 pushDataNewCreateWarehouseAreaList
             }).then(response => {
                 // Xử lý sau khi lưu thành công
@@ -251,7 +251,7 @@ class CreateWarehouseAreaList extends Component {
         pushDataNewCreateWarehouseAreaList.push(updatedData[key])
 
         // Gửi dữ liệu cập nhật xuống server
-        axios.post('/updatedataCreateWarehouse', {
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/updatedataCreateWarehouse', {
             pushDataNewCreateWarehouseAreaList
         }).then(response => {
             // Xử lý sau khi lưu thành công
