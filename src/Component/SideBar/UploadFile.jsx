@@ -138,7 +138,7 @@ class UploadFile extends Component {
                 }
             }
 
-            axios.post('/uploadFileMp3', formData, config)
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/uploadFileMp3', formData, config)
                 .then((res) => {
                     var filePath = res.data.fileNameInServer;
 
@@ -153,7 +153,7 @@ class UploadFile extends Component {
                     let id = randomId();
                     let dateTime = UpdateDateTime(new Date())
 
-                    axios.post('/uploadFile', { id, nameSong, nameSinger, describe, imageProfile, audioFileName, audioFileSize, categoryMusic, dateTime })
+                    axios.post(process.env.REACT_APP_BACKEND_URL+'/uploadFile', { id, nameSong, nameSinger, describe, imageProfile, audioFileName, audioFileSize, categoryMusic, dateTime })
                         .then(resp => {
                             console.log('thanh cong');
                             
