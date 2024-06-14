@@ -100,7 +100,7 @@ class AddSupplier extends Component {
         if (!isItemExist) {
 
 
-            axios.post('/addSupplier', {
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/addSupplier', {
                 id,
                 supplierName,
                 supplierNumberPhone,
