@@ -498,16 +498,16 @@ class RequestListNotApprove extends Component {
             const idRequest = id;
             const orderCode = value.orderCode;
             const dateUpdate = UpdateDateTime()
-            axios.post('/addApproveDate', { id: idApproveDate, orderCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/addApproveDate', { id: idApproveDate, orderCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
                 .catch(error => {
                     toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
                         <i>Duyệt đơn thất bại!</i></div>);
                 });
-            axios.post('/updateAppremovedRequest', { id, orderSupplierName: value.orderSupplierName, orderPointApprove, statusOrder, dateUpdate, reasonMessage, orderComplete }).then((res) => {
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/updateAppremovedRequest', { id, orderSupplierName: value.orderSupplierName, orderPointApprove, statusOrder, dateUpdate, reasonMessage, orderComplete }).then((res) => {
                 const dataNotifi = dataNotification.length > 0 && dataNotification.filter(item => item.idRequest === id) || []
                 if (dataNotifi.length > 0) {
 
-                    return axios.post('/updateNotificationPointInto', {
+                    return axios.post(process.env.REACT_APP_BACKEND_URL+'/updateNotificationPointInto', {
                         idRequest: dataNotifi[0].idRequest, status: statusOrder, pointApprovedInto: notificationPointApprovedInto, isRead: 0, dateCreated: UpdateDateTime()
                     }).catch(error => {
                         toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
@@ -563,14 +563,14 @@ class RequestListNotApprove extends Component {
         const orderCode = value.orderCode;
         const dateUpdate = UpdateDateTime()
         const orderComplete = 0;
-        axios.post('/addApproveDate', { id: idApproveReturn, orderCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/addApproveDate', { id: idApproveReturn, orderCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
             .catch(error => {
                 toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
                     <i>Duyệt đơn thất bại!</i></div>);
             });
-        // axios.post('/updateAppe', { id: id, orderCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
+        // axios.post(process.env.REACT_APP_BACKEND_URL+'/updateAppe', { id: id, orderCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
 
-        axios.post('/updateAppremovedRequest', {
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/updateAppremovedRequest', {
             id, orderSupplierName: value.orderSupplierName, orderPointApprove,
             statusOrder, dateUpdate, reasonMessage, orderComplete
         }).then((res) => {
@@ -580,7 +580,7 @@ class RequestListNotApprove extends Component {
             const dataNotifi = dataNotification.length > 0 && dataNotification.filter(item => item.idRequest === id) || []
             if (dataNotifi.length > 0) {
 
-                return axios.post('/updateNotificationPointInto', {
+                return axios.post(process.env.REACT_APP_BACKEND_URL+'/updateNotificationPointInto', {
                     idRequest: dataNotifi[0].idRequest, status: statusOrder, pointApprovedInto: -1, isRead: 0, dateCreated: UpdateDateTime()
                 }).catch(error => {
                     toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
