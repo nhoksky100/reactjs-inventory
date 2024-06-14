@@ -11,7 +11,7 @@ import bcrypt from 'bcryptjs';
 // import RequestInto from './RequestInto.jsx';
 const getdataRequest = () => axios.get('/getRequestTransfer').then((res) => res.data)
 const getdataMember = () => axios.get('/getMember').then((res) => res.data)
-const getdataTransferExportApprover = () => axios.get('/getTransferExportApprover').then((res) => res.data)
+const getdataTransferExportApprover = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getTransferExportApprover').then((res) => res.data)
 class RequestListApproved extends Component {
     constructor(props) {
         super(props);
