@@ -112,7 +112,7 @@ class ProfileAccount extends Component {
 
     handleSaveImageProfile = () => {
         const { id, email, imageProfile } = this.state;
-        axios.post('/imageFile', { id, email, image: imageProfile })
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/imageFile', { id, email, image: imageProfile })
             .then(() => {
                 toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
                     <i>Lưu hình ảnh thành công!</i></div>);
