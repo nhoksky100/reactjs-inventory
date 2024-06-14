@@ -10,13 +10,13 @@ import { FormatNumber } from '../../FormatNumber'
 import Select from 'react-select';
 import { Navigate } from 'react-router-dom';
 // import Creatable from 'react-select/async-creatable';
-const getdataRequest = () => axios.get('/getRequestTransfer').then((res) => res.data)
-const getdataItemsList = () => axios.get('/getItemsList').then((res) => res.data)
-const getdataListAccount = () => axios.get('/getAccount').then((res) => res.data)
-const getDataRequestTeamp = () => axios.get('/getRequestTransferSaveTeamp').then((res) => res.data)
-const getDataMember = () => axios.get('/getMember').then((res) => res.data)
-const getdataWarehouse = () => axios.get('/getWarehouse').then((res) => res.data)
-const getdataNotification = () => axios.get('/getNotification').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTransfer').then((res) => res.data)
+const getdataItemsList = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getItemsList').then((res) => res.data)
+const getdataListAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data)
+const getDataRequestTeamp = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTransferSaveTeamp').then((res) => res.data)
+const getDataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
+const getdataWarehouse = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getWarehouse').then((res) => res.data)
+const getdataNotification = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getNotification').then((res) => res.data)
 
 class AddRequest extends Component {
     constructor(props) {
