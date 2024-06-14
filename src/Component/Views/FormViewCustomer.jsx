@@ -215,126 +215,126 @@ const FormAccountCustomer = () => {
     const isShowForm = (tokenObj) => {
         if (pathUrl && typeof pathUrl === 'string' && dataLoaded && permission) {
             switch (pathUrl) {
-                case '/':
+                case process.env.REACT_APP_BACKEND_URL+'/':
                     return <ContentOverView tokenObj={tokenObj} />;
-                case '/warehouse':
+                case process.env.REACT_APP_BACKEND_URL+'/warehouse':
                     if (permission === 'Lãnh đạo' || permission === 'Thành viên kho' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
                         return <Warehouse tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/into-warehouse-list':
+                case process.env.REACT_APP_BACKEND_URL+'/into-warehouse-list':
                     if (permission === 'Lãnh đạo' || permission === 'Thành viên kho' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
                         return <IntoWarehouseList tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/transfer-warehouse-export':
+                case process.env.REACT_APP_BACKEND_URL+'/transfer-warehouse-export':
                     if (permission === 'Lãnh đạo' || permission === 'Thành viên kho' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
                         return <TransferExportForm tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/create-warehouse':
+                case process.env.REACT_APP_BACKEND_URL+'/create-warehouse':
                     if (permission === 'Lãnh đạo' || permission === 'Admin') {
                         return <AddCreateWarehouse tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/warehouse-list':
+                case process.env.REACT_APP_BACKEND_URL+'/warehouse-list':
                     if (permission === 'Lãnh đạo' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán') || permission === 'Thành viên kho') {
                         return <CreateWarehouseAreaList tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/purchase':
+                case process.env.REACT_APP_BACKEND_URL+'/purchase':
                     if (permission === 'Lãnh đạo' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
                         return <PurchaseRequestNotApprove tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/purchase-approved':
+                case process.env.REACT_APP_BACKEND_URL+'/purchase-approved':
                     if (permission === 'Lãnh đạo' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
                         return <PurchaseRequestListApproved tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/purchase-all':
+                case process.env.REACT_APP_BACKEND_URL+'/purchase-all':
                     if (permission === 'Lãnh đạo' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
                         return <PurchaseRequestListAll tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/purchase-into-warehouse':
+                case process.env.REACT_APP_BACKEND_URL+'/purchase-into-warehouse':
                     if (permission === 'Lãnh đạo' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán') || permission === 'Thành viên kho') {
                         return <PurchaseIntoWarehouse tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/document':
+                case process.env.REACT_APP_BACKEND_URL+'/document':
                     if (permission === 'Lãnh đạo' || permission === 'Admin') {
                         return <Document tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/add-document':
+                case process.env.REACT_APP_BACKEND_URL+'/add-document':
                     if (permission === 'Lãnh đạo' || permission === 'Admin') {
                         return <AddDocument tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/supplier':
+                case process.env.REACT_APP_BACKEND_URL+'/supplier':
                     if (permission === 'Lãnh đạo' || permission === 'Admin' || permission === 'Thành viên kho') {
                         return <Supplier tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/add-supplier':
+                case process.env.REACT_APP_BACKEND_URL+'/add-supplier':
                     if (permission === 'Lãnh đạo' || permission === 'Admin' || permission === 'Thành viên kho') {
                         return <AddSupplier tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/member':
+                case process.env.REACT_APP_BACKEND_URL+'/member':
                     if (permission === 'Lãnh đạo' || permission === 'Admin') {
                         return <Member tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/add-member':
+                case process.env.REACT_APP_BACKEND_URL+'/add-member':
                     if (permission === 'Lãnh đạo' || permission === 'Admin') {
                         return <AddMember tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/category/items-list':
+                case process.env.REACT_APP_BACKEND_URL+'/category/items-list':
                     if (permission === 'Lãnh đạo' || permission === 'Admin' || permission === 'Thành viên kho' || permission === 'Nhân viên' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
                         return <ItemList tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/add-item-list':
+                case process.env.REACT_APP_BACKEND_URL+'/add-item-list':
                     if (permission === 'Lãnh đạo' || permission === 'Admin') {
                         return <AddItemList tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/add-account':
+                case process.env.REACT_APP_BACKEND_URL+'/add-account':
                     if (permission === 'Lãnh đạo' || permission === 'Admin') {
                         return <AddAccount tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/list-account':
+                case process.env.REACT_APP_BACKEND_URL+'/list-account':
                     if (permission === 'Lãnh đạo' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
                         return <ListAccount tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
 
-                case '/request':
+                case process.env.REACT_APP_BACKEND_URL+'/request':
                     return <Request pathUrl={pathUrl} tokenObj={tokenObj} />;
-                case '/profile-account':
+                case process.env.REACT_APP_BACKEND_URL+'/profile-account':
                     return <ProfileForm tokenObj={tokenObj} imageProfile={imageProfile} />;
                 default:
                     break;
