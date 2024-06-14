@@ -502,7 +502,7 @@ class PurchaseRequestNotApprove extends Component {
                 })
             }
             // Thực hiện lưu dữ liệu dưới dạng axios
-            // axios.post('/updatedataRequestList', {
+            // axios.post(process.env.REACT_APP_BACKEND_URL+'/updatedataRequestList', {
             //     pushDataRequest
             // }).then(response => {
             //     // Xử lý sau khi lưu thành công
@@ -644,9 +644,9 @@ class PurchaseRequestNotApprove extends Component {
             const orderCode = value.orderCode;
             const dateUpdate = UpdateDateTime();
             const idApproveDate = this.checkIdRandom()
-            const promise = axios.post('/addApproveDate', { id: idApproveDate, orderCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
+            const promise = axios.post(process.env.REACT_APP_BACKEND_URL+'/addApproveDate', { id: idApproveDate, orderCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
                 .then(() => {
-                    return axios.post('/updateAppremovedRequest', {
+                    return axios.post(process.env.REACT_APP_BACKEND_URL+'/updateAppremovedRequest', {
                         id, orderSupplierName: value.orderSupplierName, orderPointApprove, statusOrder, dateUpdate, reasonMessage, orderComplete
                     });
                 })
@@ -671,7 +671,7 @@ class PurchaseRequestNotApprove extends Component {
 
                     if (dataNotifi.length > 0) {
 
-                        return axios.post('/updateNotificationPointInto', {
+                        return axios.post(process.env.REACT_APP_BACKEND_URL+'/updateNotificationPointInto', {
                             idRequest: dataNotifi[0].idRequest, status: 'Chờ duyệt', pointApprovedInto: 1, isRead: 0, dateCreated: UpdateDateTime()
                         });
                     }
@@ -749,10 +749,10 @@ class PurchaseRequestNotApprove extends Component {
         const dateUpdate = UpdateDateTime()
         const orderComplete = 0
         const idApproveReturn = this.checkIdRandom()
-        const promise = axios.post('/addApproveDate', { id: idApproveReturn, orderCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
+        const promise = axios.post(process.env.REACT_APP_BACKEND_URL+'/addApproveDate', { id: idApproveReturn, orderCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
             .then(() => {
-                return axios.post('/updateAppremovedRequest', { id, orderSupplierName: value.orderSupplierName, orderPointApprove, statusOrder, dateUpdate, reasonMessage, orderComplete })
-                // axios.post('/updateAppe', { id: id, orderCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
+                return axios.post(process.env.REACT_APP_BACKEND_URL+'/updateAppremovedRequest', { id, orderSupplierName: value.orderSupplierName, orderPointApprove, statusOrder, dateUpdate, reasonMessage, orderComplete })
+                // axios.post(process.env.REACT_APP_BACKEND_URL+'/updateAppe', { id: id, orderCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
                 
             })
             .then(() => {
@@ -760,7 +760,7 @@ class PurchaseRequestNotApprove extends Component {
                 const dataNotifi = dataNotification.length > 0 && dataNotification.filter(item => item.idRequest === id) || []
                 if (dataNotifi.length > 0) {
 
-                    return axios.post('/updateNotificationPointInto', {
+                    return axios.post(process.env.REACT_APP_BACKEND_URL+'/updateNotificationPointInto', {
                         idRequest: dataNotifi[0].idRequest, status: 'Từ chối', pointApprovedInto: -1, isRead: 0, dateCreated: dateUpdate
                     });
                 }
