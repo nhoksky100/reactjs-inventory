@@ -72,7 +72,7 @@ class ListFindFriend extends Component {
         const { statusSendFriend, } = this.state;
         this.setState({ statusSendFriend: !statusSendFriend, statusSender: true })
 
-        axios.post('/listSendFriend', { dataFriend, statusSendFriend, dataFriendSender })
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/listSendFriend', { dataFriend, statusSendFriend, dataFriendSender })
     }
 
     dataListSender = () => {
