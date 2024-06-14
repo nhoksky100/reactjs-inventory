@@ -5,7 +5,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { randomId } from '../../RandomId/randomId';
 
-const getdataCreateWarehouse = () => axios.get('process.env.REACT_APP_BACKEND_URL+/getCreateWarehouse').then((res) => res.data);
+const getdataCreateWarehouse = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getCreateWarehouse').then((res) => res.data);
 
 class AddCreateWarehouse extends Component {
     constructor(props) {
