@@ -14,10 +14,10 @@ import { SearchDate } from '../../SearchDate.jsx';
 // import PurchaseFormMenu from './PurchaseFormMenu.jsx';
 import { dataSearch, dataSearchValue, isDataSearch, searchDatetimeEnd, searchDatetimeStart } from '../../../StoreRcd.jsx';
 
-const getdataRequest = () => axios.get('/getRequest').then((res) => res.data)
-const getdataMember = () => axios.get('/getMember').then((res) => res.data)
-const getdataApproveOrder = () => axios.get('/getApproveOrder').then((res) => res.data)
-const getdataRequestHistory = () => axios.get('/getRequestHistory').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequest').then((res) => res.data)
+const getdataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
+const getdataApproveOrder = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getApproveOrder').then((res) => res.data)
+const getdataRequestHistory = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestHistory').then((res) => res.data)
 
 const fontName = 'Arial';
 const fontFile = '../font/arial.ttf'; // Đường dẫn đến tập tin font chữ
