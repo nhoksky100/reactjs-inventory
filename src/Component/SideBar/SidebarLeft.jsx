@@ -9,7 +9,7 @@ import bcrypt from 'bcryptjs';
 import axios from 'axios';
 
 // import { NavLink } from 'react-router-dom';
-const getdataListAccount = () => axios.get('/getAccount').then((res) => res.data)
+const getdataListAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data)
 
 class Siderbar extends Component {
     constructor(props) {
