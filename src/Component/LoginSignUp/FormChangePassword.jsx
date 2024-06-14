@@ -12,7 +12,7 @@ import { UpdateDateTime } from '../UpdateDateTime';
 import { isDisableInput } from '../../StoreRcd';
 
 // const getDataAccountCustomer = () => axios.get('/signUpAccount').then((res) => res.data)
-const getDataAccountCustomer = () => axios.get('/getAccount').then((res) => res.data)
+const getDataAccountCustomer = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data)
 const bcrypt = require('bcryptjs')
 
 
