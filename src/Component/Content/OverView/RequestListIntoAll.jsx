@@ -11,7 +11,7 @@ import Pagination from "react-js-pagination";
 import RequestAmountOrder from './RequestAmountOrder';
 
 
-const getdataRequest = () => axios.get('/getRequest').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequest').then((res) => res.data)
 
 
 class RequestListIntoAll extends Component {
