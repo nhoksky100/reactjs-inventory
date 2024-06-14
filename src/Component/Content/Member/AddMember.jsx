@@ -6,7 +6,7 @@ import { randomId } from '../../RandomId/randomId'
 import bcrypt from 'bcryptjs';
 import { Navigate } from 'react-router-dom';
 
-const getDataMember = () => axios.get('/getMember').then((res) => res.data)
+const getDataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
 
 
 class AddMember extends Component {
