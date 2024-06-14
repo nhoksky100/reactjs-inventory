@@ -14,8 +14,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import jsPDF from 'jspdf';
 // import Select from 'react-select'
 // import RequestInto from './RequestInto.jsx';
-const getdataRequest = () => axios.get('/getRequestTransfer').then((res) => res.data)
-const getdataMember = () => axios.get('/getMember').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTransfer').then((res) => res.data)
+const getdataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
 
 const fontName = 'arial';
 const fontFile = '../font/arial.ttf'; // Đường dẫn đến tập tin font chữ
