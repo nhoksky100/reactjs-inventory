@@ -4,8 +4,8 @@ import { UpdateDateTime } from '../../UpdateDateTime';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Navigate } from 'react-router-dom';
-const getdataAccount = () => axios.get('/getAccount').then((res) => res.data)
-const getdataMember = () => axios.get('/getMember').then((res) => res.data)
+const getdataAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data)
+const getdataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
 
 class AddAccount extends Component {
     constructor(props) {
