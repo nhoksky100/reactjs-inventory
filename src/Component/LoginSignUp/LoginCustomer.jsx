@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
 import { setCookie } from '../setCookie';
 
-const getdataAccount = () => axios.get(`${process.env.REACT_APP_BACKEND_URL}/getAccount`).then((res) => res.data)
+const getdataAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL +'/getAccount').then((res) => res.data)
 
 class LoginCustomer extends Component {
     constructor(props) {
