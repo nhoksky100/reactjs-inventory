@@ -88,7 +88,7 @@ class AddDocument extends Component {
         }
 
 
-        axios.post('/addDocument', {
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/addDocument', {
             id,
             documentCode,
             documentImage,
