@@ -12,13 +12,13 @@ import Select from 'react-select';
 import { connect } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { valueIndex } from '../../../StoreRcd';
-const getdataRequest = () => axios.get('/getRequest').then((res) => res.data)
-const getdataItemsList = () => axios.get('/getItemsList').then((res) => res.data)
-const getdataListAccount = () => axios.get('/getAccount').then((res) => res.data)
-const getDataRequestTeamp = () => axios.get('/getRequestTeamp').then((res) => res.data)
-const getDataMember = () => axios.get('/getMember').then((res) => res.data)
-const getdataWarehouse = () => axios.get('/getWarehouse').then((res) => res.data)
-const getdataNotification = () => axios.get('/getNotification').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequest').then((res) => res.data)
+const getdataItemsList = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getItemsList').then((res) => res.data)
+const getdataListAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data)
+const getDataRequestTeamp = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTeamp').then((res) => res.data)
+const getDataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
+const getdataWarehouse = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getWarehouse').then((res) => res.data)
+const getdataNotification = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getNotification').then((res) => res.data)
 
 class AddRequest extends Component {
     constructor(props) {
