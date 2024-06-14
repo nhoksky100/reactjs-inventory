@@ -169,7 +169,7 @@ class FormChangePassword extends Component {
                 // const id = randomId()
                 const email = dataAccountCustomer.accountEmail;
 
-                axios.post('/updateChangePassword', {
+                axios.post(process.env.REACT_APP_BACKEND_URL+'/updateChangePassword', {
                     id: dataAccountCustomer.id,
                     accountPassword: password,
                     accountEmail: email,
