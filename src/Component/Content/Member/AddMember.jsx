@@ -125,7 +125,7 @@ class AddMember extends Component {
         if (this._isMounted) {
        
           
-            axios.post('/addMember', {
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/addMember', {
                 id, memberCode, memberMaker, memberPermission, memberName, memberDepartment, memberGender, memberAddress, memberNumberPhone, memberEmail,
                 memberStatus, memberDateCreated, memberDateUpdate
             }).then(response => {
