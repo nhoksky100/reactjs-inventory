@@ -7,7 +7,7 @@ import { randomId } from '../../RandomId/randomId'
 import { connect } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-const getdataSupplier = () => axios.get('/getSupplier').then((res) => res.data)
+const getdataSupplier = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getSupplier').then((res) => res.data)
 
 class AddSupplier extends Component {
     constructor(props) {
