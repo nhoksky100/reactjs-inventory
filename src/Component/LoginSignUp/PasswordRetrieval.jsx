@@ -13,8 +13,8 @@ import { isClearFormInput, isDisableInput, reSendEmail } from '../../StoreRcd';
 
 const bcrypt = require('bcryptjs')
 
-const getDataAccountCustomer = () => axios.get('process.env.REACT_APP_BACKEND_URL+/getAccount').then((res) => res.data)
-// const getDataSendEmailConfirm = () => axios.get('process.env.REACT_APP_BACKEND_URL+/sendEmailConfirm').then((res) => res.data)
+const getDataAccountCustomer = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data)
+// const getDataSendEmailConfirm = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/sendEmailConfirm').then((res) => res.data)
 
 class PasswordRetrieval extends Component {
     constructor(props) {
