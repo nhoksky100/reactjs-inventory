@@ -5,7 +5,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { randomId } from '../../RandomId/randomId'
 
-const getdataDocument = () => axios.get('/getDocument').then((res) => res.data)
+const getdataDocument = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getDocument').then((res) => res.data)
 
 class AddDocument extends Component {
     constructor(props) {
