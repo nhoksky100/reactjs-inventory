@@ -195,7 +195,7 @@ class NotificationList extends Component {
             }
             this.handleRedirect(link);
             if (parseInt(item.isRead) === 0) {
-                axios.post('/updateNotification', { id: item.id, isRead: item.isRead = 1 })
+                axios.post(process.env.REACT_APP_BACKEND_URL+'/updateNotification', { id: item.id, isRead: item.isRead = 1 })
                     .catch(error => {
                         // Trả về null khi promise thất bại
                         console.error("Đã xảy ra lỗi:", error);
