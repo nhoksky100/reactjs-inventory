@@ -38,9 +38,9 @@ import {
     isUpdateSettingStore
 } from '../../StoreRcd';
 
-const getDataImageProfile = () => axios.get('/imageFile').then((res) => res.data);
-const getdataListAccount = () => axios.get('/getAccount').then((res) => res.data);
-const getdataMember = () => axios.get('/getMember').then((res) => res.data);
+const getDataImageProfile = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/imageFile').then((res) => res.data);
+const getdataListAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data);
+const getdataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data);
 
 const FormAccountCustomer = () => {
     const [height, setHeight] = useState('auto');
