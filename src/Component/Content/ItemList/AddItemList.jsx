@@ -8,9 +8,9 @@ import Select from 'react-select'
 import bcrypt from 'bcryptjs';
 import { Navigate } from 'react-router-dom';
 
-const getdataItemsList = () => axios.get('/getItemsList').then((res) => res.data)
-const getdataCreateWarehouse = () => axios.get('/getCreateWarehouse').then((res) => res.data)
-const getdataAccount = () => axios.get('/getAccount').then((res) => res.data)
+const getdataItemsList = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getItemsList').then((res) => res.data)
+const getdataCreateWarehouse = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getCreateWarehouse').then((res) => res.data)
+const getdataAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data)
 
 class AddItemList extends Component {
     constructor(props) {
