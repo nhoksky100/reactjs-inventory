@@ -15,7 +15,7 @@ import TimerSend from '../LoginSignUp/TimerSend';
 import { isClearFormInput, isDisableInput, isUpdateSettingStore, reSendEmail } from '../../StoreRcd';
 
 const bcrypt = require('bcryptjs')
-const getDataImageProfile = () => axios.get('/imageFile').then((res) => res.data)
+const getDataImageProfile = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/imageFile').then((res) => res.data)
 
 class Setting extends Component {
 
@@ -375,7 +375,7 @@ class Setting extends Component {
                 let cookies = new Cookies();
                 cookies.remove('codeConfirm', { path: '/' });
                 // lưu vào data json
-                axios.post('/updateAccount', { dataProfile })
+                axios.post(process.env.REACT_APP_BACKEND_URL+'/updateAccount', { dataProfile })
                     .then(response => {
                         // console.log(response.data,'response.data');
                         // Xử lý khi cập nhật thành công 
@@ -386,7 +386,7 @@ class Setting extends Component {
                             isDisable: false,
                             getCodeConfirmData: ''
                         })
-                        axios.post('/imageFile', { id, image })
+                        axios.post(process.env.REACT_APP_BACKEND_URL+'/imageFile', { id, image })
                         this.props.IS_UPDATE_SETTING(true);
 
                         toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
