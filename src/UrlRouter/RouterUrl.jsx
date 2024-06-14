@@ -13,31 +13,31 @@ class RouterUrl extends Component {
         return (
             <Fragment>
                 <Routes>
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/"} element={<FormViewCustomer  />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/warehouse"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/create-warehouse"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/warehouse-list"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/into-warehouse-list"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/transfer-warehouse-export"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/purchase"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/purchase/document"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/purchase/request-approved"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/purchase/request-all"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/purchase/into-warehouse"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/purchase/add-document"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/supplier"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/add-supplier"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/member"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/add-member"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/list-account"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/add-account"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/request"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/category/items-list"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/add-itemlist"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/profile-account"} element={<FormViewCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/login"} element={<LoginCustomer />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/login/password-retrieval"} element={<PasswordRetrieval />} />
-                    <Route path={process.env.REACT_APP_BACKEND_URL+"/new-password"} element={<FormChangePassword />} />
+                    <Route path={"/"} element={<FormViewCustomer  />} />
+                    <Route path={"/warehouse"} element={<FormViewCustomer />} />
+                    <Route path={"/create-warehouse"} element={<FormViewCustomer />} />
+                    <Route path={"/warehouse-list"} element={<FormViewCustomer />} />
+                    <Route path={"/into-warehouse-list"} element={<FormViewCustomer />} />
+                    <Route path={"/transfer-warehouse-export"} element={<FormViewCustomer />} />
+                    <Route path={"/purchase"} element={<FormViewCustomer />} />
+                    <Route path={"/purchase/document"} element={<FormViewCustomer />} />
+                    <Route path={"/purchase/request-approved"} element={<FormViewCustomer />} />
+                    <Route path={"/purchase/request-all"} element={<FormViewCustomer />} />
+                    <Route path={"/purchase/into-warehouse"} element={<FormViewCustomer />} />
+                    <Route path={"/purchase/add-document"} element={<FormViewCustomer />} />
+                    <Route path={"/supplier"} element={<FormViewCustomer />} />
+                    <Route path={"/add-supplier"} element={<FormViewCustomer />} />
+                    <Route path={"/member"} element={<FormViewCustomer />} />
+                    <Route path={"/add-member"} element={<FormViewCustomer />} />
+                    <Route path={"/list-account"} element={<FormViewCustomer />} />
+                    <Route path={"/add-account"} element={<FormViewCustomer />} />
+                    <Route path={"/request"} element={<FormViewCustomer />} />
+                    <Route path={"/category/items-list"} element={<FormViewCustomer />} />
+                    <Route path={"/add-itemlist"} element={<FormViewCustomer />} />
+                    <Route path={"/profile-account"} element={<FormViewCustomer />} />
+                    <Route path={"/login"} element={<LoginCustomer />} />
+                    <Route path={"/login/password-retrieval"} element={<PasswordRetrieval />} />
+                    <Route path={"/new-password"} element={<FormChangePassword />} />
                     <Route path="*" element={<NotPage404 />} />
                 </Routes>
                 {/* <ScrollToTop /> */}
