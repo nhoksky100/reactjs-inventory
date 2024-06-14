@@ -10,8 +10,8 @@ import { SearchDate } from '../../SearchDate.jsx';
 import PurchaseFormMenu from './PurchaseFormMenu.jsx';
 import { dataSearch, dataSearchValue, isDataSearch, searchDatetimeEnd, searchDatetimeStart } from '../../../StoreRcd.jsx';
 
-const getdataDocument = () => axios.get('/getDocument').then((res) => res.data)
-// const getDataEditMember = () => axios.get('/getEditMember').then((res) => res.data)
+const getdataDocument = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getDocument').then((res) => res.data)
+// const getDataEditMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getEditMember').then((res) => res.data)
 
 class Document extends Component {
     constructor(props) {
