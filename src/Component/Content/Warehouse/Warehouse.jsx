@@ -206,7 +206,7 @@ class Warehouse extends Component {
                 }
             })
             // Thực hiện lưu dữ liệu dưới dạng axios
-            axios.post('/updatedataWarehouseList', {
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/updatedataWarehouseList', {
                 pushdataWarehouse
             }).then(response => {
                 // this.getData()
