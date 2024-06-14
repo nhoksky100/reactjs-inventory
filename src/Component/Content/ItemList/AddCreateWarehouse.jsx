@@ -56,7 +56,7 @@ class AddCreateWarehouse extends Component {
         const { id, warehouseCode, warehouseName, warehouseStatus, dataCreateWarehouse, flagPosition, isItemExist } = this.state;
 
         if (!isItemExist) {
-            axios.post('/addCreateWarehouse', {
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/addCreateWarehouse', {
                 id,
                 warehouseCode,
                 warehouseName,
