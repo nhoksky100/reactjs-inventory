@@ -170,7 +170,7 @@ class AddItemList extends Component {
         if (!isItemExist) {
 
             if (this._isMounted) {
-                axios.post('/addItems', {
+                axios.post(process.env.REACT_APP_BACKEND_URL+'/addItems', {
                     id,
                     itemsCode,
                     itemsName,
@@ -186,7 +186,7 @@ class AddItemList extends Component {
                 }).then(response => {
                     // Xử lý sau khi yêu cầu được thêm thành công
                     // console.log("Yêu cầu đã được thêm thành công:", response.data);
-                    axios.post('/addWarehouse', {
+                    axios.post(process.env.REACT_APP_BACKEND_URL+'/addWarehouse', {
                         id,
                         idWarehouse: warehouseCode,
                         itemsCode,
