@@ -10,8 +10,8 @@ import FilterTime from '../../FilterTime.jsx';
 import { SearchDate } from '../../SearchDate.jsx';
 import { dataSearch, dataSearchValue, isDataSearch, searchDatetimeEnd, searchDatetimeStart } from '../../../StoreRcd.jsx';
 
-const getdataIntoWarehouse = () => axios.get('/getIntoWarehouse').then((res) => res.data)
-// const getDataEditMember = () => axios.get('/getEditMember').then((res) => res.data)
+const getdataIntoWarehouse = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getIntoWarehouse').then((res) => res.data)
+// const getDataEditMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getEditMember').then((res) => res.data)
 
 class IntoWarehouseList extends Component {
     constructor(props) {
