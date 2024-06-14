@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 import { imageProfile } from '../../../StoreRcd';
 
-const getDataImageProfile = () => axios.get('/imageFile').then((res) => res.data);
-const getdataMember = () => axios.get('/getMember').then((res) => res.data);
+const getDataImageProfile = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/imageFile').then((res) => res.data);
+const getdataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data);
 
 class ProfileAccount extends Component {
     constructor(props) {
