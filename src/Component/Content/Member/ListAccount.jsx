@@ -9,10 +9,10 @@ import FilterTime from '../../FilterTime.jsx';
 import { SearchDate } from '../../SearchDate.jsx';
 import MemberFormMenu from './MemberFormMenu.jsx';
 import { dataSearch, dataSearchValue, isDataSearch, searchDatetimeEnd, searchDatetimeStart } from '../../../StoreRcd.jsx';
-const getdataListAccount = () => axios.get('/getAccount').then((res) => res.data)
-// const getDataMember = () => axios.get('/getMember').then((res) => res.data)
+const getdataListAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data)
+// const getDataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
 
-// const getDataEditMember = () => axios.get('/getEditMember').then((res) => res.data)
+// const getDataEditMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getEditMember').then((res) => res.data)
 
 class ListAccount extends Component {
     constructor(props) {
