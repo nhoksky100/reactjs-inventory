@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
 import { setCookie } from '../setCookie';
 console.log('Backend URL:', process.env.REACT_APP_BACKEND_URL);
-const getdataAccount = () => axios.get(`${process.env.REACT_APP_BACKEND_URL}/getAccount`).then((res) => res.data);
+const getdataAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data);
 
 
 class LoginCustomer extends Component {
@@ -59,7 +59,7 @@ class LoginCustomer extends Component {
     }
     getData = () => {
         getdataAccount().then((res) => {
-             console.log(res, 'res 2');
+             console.log(res, 'res 3');
             if (this._isMounted) {
 
                 this.setState({ dataAccount: res })
