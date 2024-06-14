@@ -212,7 +212,7 @@ class Supplier extends Component {
             })
             console.log(pushDataNewSuplier, 'pushDataNewSuplier');
             // Thực hiện lưu dữ liệu dưới dạng axios
-            axios.post('/updatedataSupplier', {
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/updatedataSupplier', {
                 pushDataNewSuplier
             }).then(response => {
                 // Xử lý sau khi lưu thành công
@@ -259,7 +259,7 @@ class Supplier extends Component {
 
         // console.log(pushDataNewSuplier);
 
-        axios.post('/updatedataSupplier', {
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/updatedataSupplier', {
             pushDataNewSuplier
         }).then(response => {
             // Xử lý sau khi lưu thành công
