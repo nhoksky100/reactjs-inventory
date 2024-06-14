@@ -1012,7 +1012,7 @@ class TransferExport extends Component {
             }
             pdf.save('danh_sach_hang_xuat_duyet.pdf', { returnPromise: true })
 
-            axios.post('/updateRequestTransferExportApprove', { dataRequestExportPDF })
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/updateRequestTransferExportApprove', { dataRequestExportPDF })
                 .then(res => {
                     this.setState({
                         dataRequestExportPDF: [],
@@ -1020,15 +1020,15 @@ class TransferExport extends Component {
                         checkedIds: []
                     });
                     // let requestTransferComplete = 2; requestTransferWarehouseResidual
-                    return axios.post('/updateWarehouseResidual', { dataRequestExportPDF });
+                    return axios.post(process.env.REACT_APP_BACKEND_URL+'/updateWarehouseResidual', { dataRequestExportPDF });
                 })
                 .then(() => {
-                    return axios.post('/updateRequestTransferExport', { dataRequestExportPDF });
+                    return axios.post(process.env.REACT_APP_BACKEND_URL+'/updateRequestTransferExport', { dataRequestExportPDF });
                 })
                 .then(() => {
                     if (newCheckedIds.length > 0) {
                         //nếu check id không trùng với data đã pending thì thêm vào id mới
-                        return axios.post('/intoRequestTransferExportHistory', { idHistory, idRequestTransfers: newCheckedIds.join(','), caseRequest: 1, dateCreated: UpdateDateTime() });
+                        return axios.post(process.env.REACT_APP_BACKEND_URL+'/intoRequestTransferExportHistory', { idHistory, idRequestTransfers: newCheckedIds.join(','), caseRequest: 1, dateCreated: UpdateDateTime() });
                     }
                 })
                 .then(() => {
@@ -1036,7 +1036,7 @@ class TransferExport extends Component {
                     const notificationPromises = dataRequestExportPDF.map(item => {
                         const dataNotifi = dataNotification.length > 0 && dataNotification.filter(notif => notif.idRequest === item.id) || [];
                         if (dataNotifi.length > 0) {
-                            return axios.post('/updateNotificationPointInto', {
+                            return axios.post(process.env.REACT_APP_BACKEND_URL+'/updateNotificationPointInto', {
                                 idRequest: dataNotifi[0].idRequest,
                                 status: 'Đã duyệt',
                                 pointApprovedExport: 3,
