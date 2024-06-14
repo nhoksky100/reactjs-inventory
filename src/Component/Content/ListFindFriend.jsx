@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { Component, Fragment } from 'react';
 import { toast } from 'react-toastify';
-const getDataListFindFriend = () => axios.get('/account_Customer').then((res) => res.data)
-const getDataImageProfile = () => axios.get('/imageFile').then((res) => res.data)
-const getListSendFriend = () => axios.get('/listSendFriend').then((res) => res.data)
+const getDataListFindFriend = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/account_Customer').then((res) => res.data)
+const getDataImageProfile = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/imageFile').then((res) => res.data)
+const getListSendFriend = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/listSendFriend').then((res) => res.data)
 
 class ListFindFriend extends Component {
     constructor(props) {
