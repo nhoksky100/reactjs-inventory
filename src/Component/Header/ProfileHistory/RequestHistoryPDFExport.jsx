@@ -21,8 +21,8 @@ const fontName = 'Arial';
 const fontFile = '../font/arial.ttf'; // Đường dẫn đến tập tin font chữ
 const fontEncoding = 'Unicode'; // Bảng mã của font chữ
 
-const getdataPDFTransferHistory = () => axios.get('/getRequestTransferHistory').then((res) => res.data)
-const getdataRequestTransfer = () => axios.get('/getRequestTransfer').then((res) => res.data)
+const getdataPDFTransferHistory = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTransferHistory').then((res) => res.data)
+const getdataRequestTransfer = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTransfer').then((res) => res.data)
 class RequestHistoryPDFExport extends Component {
     constructor(props) {
         super(props);
