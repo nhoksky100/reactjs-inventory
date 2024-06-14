@@ -206,7 +206,7 @@ class Member extends Component {
             })
 
             // Thực hiện lưu dữ liệu dưới dạng axios
-            axios.post('/updateDataMember', {
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/updateDataMember', {
                 pushDataNewMember
             }).then(response => {
                 // Xử lý sau khi lưu thành công
@@ -266,11 +266,11 @@ class Member extends Component {
         pushDataNewMember.push(updatedData[key])
         // console.log(pushDataNewMember);
         // Gửi dữ liệu cập nhật xuống server
-        axios.post('/updateDataMember', {
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/updateDataMember', {
             pushDataNewMember
         }).then(response => {
             // Xử lý sau khi lưu thành công
-            axios.post('/upateAccount', {
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/upateAccount', {
                 accountCode: pushDataNewMember.length > 0 && pushDataNewMember[0].memberCode,
                 accountStatus: pushDataNewMember.length > 0 && pushDataNewMember[0].memberStatus,
                 accountDateUpdate: pushDataNewMember.length > 0 && pushDataNewMember[0].memberDateUpdate,
