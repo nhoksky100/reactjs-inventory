@@ -214,7 +214,7 @@ class IntoWarehouseList extends Component {
             })
             console.log(pushDataNewSuplier, 'pushDataNewSuplier');
             // Thực hiện lưu dữ liệu dưới dạng axios
-            axios.post('/updatedataIntoWarehouse', {
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/updatedataIntoWarehouse', {
                 pushDataNewSuplier
             }).then(response => {
                 // Xử lý sau khi lưu thành công
@@ -258,7 +258,7 @@ class IntoWarehouseList extends Component {
 
         // console.log(pushDataNewSuplier);
 
-        axios.post('/updatedataIntoWarehouse', {
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/updatedataIntoWarehouse', {
             pushDataNewSuplier
         }).then(response => {
             // Xử lý sau khi lưu thành công
