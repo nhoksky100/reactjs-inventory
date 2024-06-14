@@ -9,9 +9,9 @@ import Pagination from "react-js-pagination";
 import bcrypt from 'bcryptjs';
 // import Select from 'react-select'
 // import RequestInto from './RequestInto.jsx';
-const getdataRequest = () => axios.get('/getRequestTransfer').then((res) => res.data)
-const getdataMember = () => axios.get('/getMember').then((res) => res.data)
-const getdataNotification = () => axios.get('/getNotification').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTransfer').then((res) => res.data)
+const getdataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
+const getdataNotification = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getNotification').then((res) => res.data)
 
 class RequestListNotApprove extends Component {
     constructor(props) {
