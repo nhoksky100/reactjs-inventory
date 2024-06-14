@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 import Cookies from 'universal-cookie';
 import { setCookie } from '../setCookie';
-console.log('Backend URL:', process.env.REACT_APP_BACKEND_URL);
+
 const getdataAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data);
 
 
@@ -145,7 +145,7 @@ class LoginCustomer extends Component {
                 let dataLogin = value;
                 console.log(value,'value');
                 // Trả về một promise từ mỗi yêu cầu axios.post
-                return axios.post('/login_Account', { dataLogin, username, password })
+                return axios.post(process.env.REACT_APP_BACKEND_URL+'/login_Account', { dataLogin, username, password })
                     .then((res) => {
                         if (res.data.isLogin) {
                             flagLogin = true;
