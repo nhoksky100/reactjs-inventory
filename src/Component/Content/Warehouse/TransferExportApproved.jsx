@@ -16,8 +16,8 @@ import { UpdateDateTime } from '../../UpdateDateTime';
 const fontName = 'Arial';
 const fontFile = '../font/arial.ttf'; // Đường dẫn đến tập tin font chữ
 const fontEncoding = 'Unicode'; // Bảng mã của font chữ
-const getdataRequest = () => axios.get('/getRequestTransfer').then((res) => res.data)
-const getdataMember = () => axios.get('/getMember').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTransfer').then((res) => res.data)
+const getdataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
 
 class TransferExportApproved extends Component {
     constructor(props) {
