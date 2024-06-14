@@ -138,7 +138,7 @@ class LoginCustomer extends Component {
         this.setState({ isDisabled: true }); // Vô hiệu hóa nút
 
         // Tạo một mảng chứa tất cả các promise
-        const promises =dataAccount && dataAccount.length > 0 && dataAccount.map((value) => {
+        const promises =dataAccount.length > 0 && dataAccount.map((value) => {
           
             if ((username === value.accountUserName || username === value.accountEmail) && value.accountStatus === 'Đang sử dụng') {
                 let dataLogin = value;
