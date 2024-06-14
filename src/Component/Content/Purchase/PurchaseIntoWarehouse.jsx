@@ -334,7 +334,7 @@ class PurchaseIntoWarehouse extends Component {
                     }
                     // Tạo promise cho mỗi dòng
 
-                    const promise = axios.post('/addIntoWarehouse', {
+                    const promise = axios.post(process.env.REACT_APP_BACKEND_URL+'/addIntoWarehouse', {
                         id, orderCode, orderName, orderNotes, unit, amount, unitPrice, intoMoney,
                         documentCode, orderSupplierName, intoWarehouseItemsCommodities,
                         intoWarehouseDateUpdate: UpdateDateTime(),
@@ -342,7 +342,7 @@ class PurchaseIntoWarehouse extends Component {
                     })
                         .then(response => {
                             // cập nhật vào kho tổng 
-                            axios.post('/updateWarehouseInto', {
+                            axios.post(process.env.REACT_APP_BACKEND_URL+'/updateWarehouseInto', {
                                 warehouseType: documentCode, warehouseItemsCode: orderCode, warehouseItemsName: orderName,
                                 warehouseAreaName, warehouseItemsCommodities: intoWarehouseItemsCommodities, warehouseUnitPrice: unitPrice,
                                 warehouseResidual: newWarehouseResidual, warehouseUnit: unit, intoWarehouseCode: id, intoWarehouseDate: UpdateDateTime()
