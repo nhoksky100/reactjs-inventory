@@ -649,7 +649,7 @@ class TransferExportApproved extends Component {
             .then(() => {
                 // Lưu trữ giá trị của supplierNames vào biến tạm thời trước khi xuất file PDF
                 let requestTransferComplete = 2;
-                axios.post('/updateAppremovedTransferComplete', { requestTransferComplete, dataRequestExportPDF })
+                axios.post(process.env.REACT_APP_BACKEND_URL+'/updateAppremovedTransferComplete', { requestTransferComplete, dataRequestExportPDF })
                     .then(res => {
 
                         this.setState({
@@ -660,7 +660,7 @@ class TransferExportApproved extends Component {
                             checkedIds: [],
                             idHistory: randomId()
                         });
-                        return axios.post('/intoRequestTransferExportHistory', { idHistory, idRequestTransfers: checkedIds.join(','), caseRequest: 0, dateCreated: UpdateDateTime() });
+                        return axios.post(process.env.REACT_APP_BACKEND_URL+'/intoRequestTransferExportHistory', { idHistory, idRequestTransfers: checkedIds.join(','), caseRequest: 0, dateCreated: UpdateDateTime() });
 
                     })
 
