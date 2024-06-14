@@ -413,12 +413,12 @@ class RequestListNotApprove extends Component {
                 requestTransferComplete = 1
             }
             const requestDateUpdate = UpdateDateTime()
-            axios.post('/addApproveDateTransferExport', { id: idApproveDate, warehouseItemsCode: value.warehouseItemsCode, requestTransferDepartment: departmentApproveDate, requestTransferMaker: memberName, requestDateUpdate, idRequest })
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/addApproveDateTransferExport', { id: idApproveDate, warehouseItemsCode: value.warehouseItemsCode, requestTransferDepartment: departmentApproveDate, requestTransferMaker: memberName, requestDateUpdate, idRequest })
                 .catch(error => {
                     toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
                         <i>Duyệt đơn thất bại!</i></div>);
                 });
-            axios.post('/updateAppremovedRequestTransferExport', {
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/updateAppremovedRequestTransferExport', {
                 id, requestTransferPointApprove: pointApprove.join(','), requestTransferAmountApproved: value.requestTransferAmountApproved,
                 requestTransferStatus, requestDateUpdate, requestTransferReason: reasonMessage, requestTransferComplete,
             }).then((res) => {
@@ -428,7 +428,7 @@ class RequestListNotApprove extends Component {
                 const dataNotifi = dataNotification.length > 0 && dataNotification.filter(item => item.idRequest === id) || []
                 if (dataNotifi.length > 0) {
 
-                    return axios.post('/updateNotificationPointInto', {
+                    return axios.post(process.env.REACT_APP_BACKEND_URL+'/updateNotificationPointInto', {
                         idRequest: dataNotifi[0].idRequest, status: requestTransferStatus, pointApprovedExport: notificationPointApprovedExport, isRead: 0, dateCreated: UpdateDateTime()
                     }).catch(error => {
                         toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
@@ -471,10 +471,10 @@ class RequestListNotApprove extends Component {
         const warehouseItemsCode = value.warehouseItemsCode;
         const requestDateUpdate = UpdateDateTime()
 
-        axios.post('/addApproveDateTransferExport', { id: idApproveReturn, warehouseItemsCode, requestTransferDepartment: departmentApproveDate, requestTransferMaker: memberName, requestDateUpdate, idRequest })
-        // axios.post('/updateAppe', { id: id, warehouseItemsCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/addApproveDateTransferExport', { id: idApproveReturn, warehouseItemsCode, requestTransferDepartment: departmentApproveDate, requestTransferMaker: memberName, requestDateUpdate, idRequest })
+        // axios.post(process.env.REACT_APP_BACKEND_URL+'/updateAppe', { id: id, warehouseItemsCode, department: departmentApproveDate, orderApprove: memberName, dateUpdate, idRequest })
 
-        axios.post('/updateAppremovedRequestTransferExport', {
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/updateAppremovedRequestTransferExport', {
             id, requestTransferPointApprove: pointApprove.join(','),
             requestTransferStatus, requestDateUpdate, requestTransferReason: reasonMessage, requestTransferComplete: 0
         }).then((res) => {
@@ -484,7 +484,7 @@ class RequestListNotApprove extends Component {
             const dataNotifi = dataNotification.length > 0 && dataNotification.filter(item => item.idRequest === id) || []
             if (dataNotifi.length > 0) {
 
-                return axios.post('/updateNotificationPointInto', {
+                return axios.post(process.env.REACT_APP_BACKEND_URL+'/updateNotificationPointInto', {
                     idRequest: dataNotifi[0].idRequest, status: requestTransferStatus, pointApprovedExport: -1, isRead: 0, dateCreated: UpdateDateTime()
                 }).catch(error => {
                     toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
