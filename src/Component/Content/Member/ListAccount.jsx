@@ -221,7 +221,7 @@ class ListAccount extends Component {
                 })
 
                 // Thực hiện lưu dữ liệu dưới dạng axios
-                axios.post('/updatedataListAccount', {
+                axios.post(process.env.REACT_APP_BACKEND_URL+'/updatedataListAccount', {
                     pushDataNewAccount
                 }).then(response => {
                     // Xử lý sau khi lưu thành công
