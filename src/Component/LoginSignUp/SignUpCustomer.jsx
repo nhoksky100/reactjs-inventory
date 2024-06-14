@@ -7,8 +7,8 @@ import { toast } from 'react-toastify';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom';
 import { UpdateDateTime } from '../UpdateDateTime';
 
-// const getDataAccountCustomer = () => axios.get('/signUpAccount').then((res) => res.data)
-const getDataAccountCustomer = () => axios.get('/account_Customer').then((res) => res.data)
+// const getDataAccountCustomer = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/signUpAccount').then((res) => res.data)
+const getDataAccountCustomer = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/account_Customer').then((res) => res.data)
 
 class SignUpCustomer extends Component {
     constructor(props) {
@@ -180,7 +180,7 @@ class SignUpCustomer extends Component {
             const date = new Date();
             const dateTimeCreate = UpdateDateTime(date)
             const id = randomId()
-            axios.post('/signUp_Account', { id, username, password, email,image, dateTimeCreate })
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/signUp_Account', { id, username, password, email,image, dateTimeCreate })
                 .then((res) => {
                     toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
                         <i>Đăng ký thành công!</i></div>)
