@@ -9,14 +9,14 @@ import { randomId } from '../../RandomId/randomId'
 import { FormatNumber } from '../../FormatNumber'
 import Select from 'react-select';
 import Creatable from 'react-select/async-creatable';
-const getdataRequest = () => axios.get('/getRequest').then((res) => res.data)
-const getdataItemsList = () => axios.get('/getItemsList').then((res) => res.data)
-const getdataListAccount = () => axios.get('/getAccount').then((res) => res.data)
-const getDataRequestTeamp = () => axios.get('/getRequestTeamp').then((res) => res.data)
-const getDataMember = () => axios.get('/getMember').then((res) => res.data)
-const getDataOrderApprove = () => axios.get('/getApproveOrder').then((res) => res.data)
-const getdataDocument = () => axios.get('/getDocument').then((res) => res.data)
-const getdataWarehouse = () => axios.get('/getWarehouse').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequest').then((res) => res.data)
+const getdataItemsList = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getItemsList').then((res) => res.data)
+const getdataListAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data)
+const getDataRequestTeamp = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTeamp').then((res) => res.data)
+const getDataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
+const getDataOrderApprove = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getApproveOrder').then((res) => res.data)
+const getdataDocument = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getDocument').then((res) => res.data)
+const getdataWarehouse = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getWarehouse').then((res) => res.data)
 
 class PurchaseIntoWarehouse extends Component {
     constructor(props) {
