@@ -9,9 +9,9 @@ import Pagination from "react-js-pagination";
 import bcrypt from 'bcryptjs';
 // import Select from 'react-select'
 // import RequestInto from './RequestInto.jsx';
-const getdataRequest = () => axios.get('/getRequestTransfer').then((res) => res.data)
-const getdataMember = () => axios.get('/getMember').then((res) => res.data)
-const getdataTransferExportApprover = () => axios.get('/getTransferExportApprover').then((res) => res.data)
+const getdataRequest = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getRequestTransfer').then((res) => res.data)
+const getdataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
+const getdataTransferExportApprover = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getTransferExportApprover').then((res) => res.data)
 
 class RequestListReturn extends Component {
     constructor(props) {
