@@ -13,7 +13,7 @@ import { dataSearchValue } from '../../../StoreRcd.jsx'
 import { isDataSearch } from '../../../StoreRcd.jsx'
 import { searchDatetimeStart } from '../../../StoreRcd.jsx'
 import { searchDatetimeEnd } from '../../../StoreRcd.jsx'
-const getDataMember = () => axios.get('/getMember').then((res) => res.data)
+const getDataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
 // const getDataEditMember = () => axios.get('/getEditMember').then((res) => res.data)
 
 class Member extends Component {
