@@ -149,7 +149,7 @@ class ItemList extends Component {
             })
 
             // Thực hiện lưu dữ liệu dưới dạng axios
-            axios.post('/updatedataItemsList', {
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/updatedataItemsList', {
                 pushDataNewItemsList
             }).then(response => {
                 // Xử lý sau khi lưu thành công
@@ -193,7 +193,7 @@ class ItemList extends Component {
         pushDataNewItemsList.push(updatedData[key])
 
         // Gửi dữ liệu cập nhật xuống server
-        axios.post('/updatedataItemsList', {
+        axios.post(process.env.REACT_APP_BACKEND_URL+'/updatedataItemsList', {
             pushDataNewItemsList
         }).then(response => {
             // Xử lý sau khi lưu thành công
@@ -202,7 +202,7 @@ class ItemList extends Component {
             let warehouseDateUpdate = UpdateDateTime()
             this.getData()
 
-            axios.post('/updatedataWarehouseListStatus', { warehouseStatus, warehouseDateUpdate, id: updatedData[key].id })
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/updatedataWarehouseListStatus', { warehouseStatus, warehouseDateUpdate, id: updatedData[key].id })
 
             toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
                 <i>Cập nhật trạng thái thành công!</i></div>);
