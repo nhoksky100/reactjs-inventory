@@ -350,7 +350,7 @@ class AddRequest extends Component {
                     const existingDateCreated = existingData ? existingData.dateCreated : null;
 
                     // Tạo promise cho mỗi dòng
-                    const promise = axios.post('/addOrderRequest', {
+                    const promise = axios.post(process.env.REACT_APP_BACKEND_URL+'/addOrderRequest', {
                         id: id, // Sử dụng rowAddIndex trực tiếp
                         warehouseAreaName,
                         orderCode,
@@ -370,14 +370,14 @@ class AddRequest extends Component {
                     }).then(response => {
                         if (newRowDataListTeamp.length > 0) {
                             newRowDataListTeamp.map((value, key) => {
-                                axios.post('/removeOrderTeamp', { id: value.id })
+                                axios.post(process.env.REACT_APP_BACKEND_URL+'/removeOrderTeamp', { id: value.id })
                                     .catch(error => {
                                         console.error("Đã xảy ra lỗi khi xóa dữ liệu:", error);
                                     });
                             })
                         }
                         if (permission === 'Thành viên thu mua') {
-                            axios.post('/addApproveDate', {
+                            axios.post(process.env.REACT_APP_BACKEND_URL+'/addApproveDate', {
                                 id: randomId(),
                                 orderApprove: memberName,
                                 department: memberDepartment,
@@ -390,7 +390,7 @@ class AddRequest extends Component {
                         let idNotification = this.refeshRandomId(dataNotification)
 
                         const nameItems = 'Mặt hàng ' + orderName
-                        axios.post('/addNotification', {
+                        axios.post(process.env.REACT_APP_BACKEND_URL+'/addNotification', {
                             id: idNotification, idRequest: id, idMember: idAccount, title: 'Đơn nhập hàng đang chờ duyệt',
                             content: nameItems, maker: memberName, department: memberDepartment, status: 'Chờ duyệt', isApproved: 0,
                             pointApprovedInto: 0,
@@ -485,7 +485,7 @@ class AddRequest extends Component {
 
                     let response;
                     if (isNewRowData) {
-                        response = await axios.post('/updateOrderRequestTeamp', {
+                        response = await axios.post(process.env.REACT_APP_BACKEND_URL+'/updateOrderRequestTeamp', {
                             id: id,
                             saveCode: orderCode,
                             warehouseAreaName: warehouseAreaName,
@@ -502,7 +502,7 @@ class AddRequest extends Component {
                         });
                     }
                     else {
-                        response = await axios.post('/addOrderRequestTeamp', {
+                        response = await axios.post(process.env.REACT_APP_BACKEND_URL+'/addOrderRequestTeamp', {
                             id: id,
                             saveCode: orderCode,
                             warehouseAreaName: warehouseAreaName,
@@ -729,7 +729,7 @@ class AddRequest extends Component {
 
         // Kiểm tra xem có mục nào phù hợp với điều kiện không
         if (filteredRequests.length > 0) {
-            axios.post('/removeOrderTeamp', { id })
+            axios.post(process.env.REACT_APP_BACKEND_URL+'/removeOrderTeamp', { id })
                 .then(response => {
                     // Xử lý kết quả nếu cần
                 })
