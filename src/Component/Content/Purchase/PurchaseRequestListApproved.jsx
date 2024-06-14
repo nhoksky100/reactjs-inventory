@@ -680,7 +680,7 @@ class PurchaseRequestListApproved extends Component {
 
         pdf.save('danh_sach_hang_duyet.pdf', { returnPromise: true })
             .then(() => {
-                axios.post('/updatePurchaseExport', { dataRequestExportPDF })
+                axios.post(process.env.REACT_APP_BACKEND_URL+'/updatePurchaseExport', { dataRequestExportPDF })
                     .then(res => {
                         toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
                             <i>Xuất file PDF thành công!</i></div>);
@@ -691,8 +691,8 @@ class PurchaseRequestListApproved extends Component {
                             idRequest: ''
                         });
                         let orderComplete = 2;
-                        axios.post('/updateAppremovedRequestComplete', {idHistory, orderComplete, dataRequestExportPDF });
-                        axios.post('/intoRequestHistory', { idHistory, idRequests: checkedIds.join(','), dateCreated: UpdateDateTime() });
+                        axios.post(process.env.REACT_APP_BACKEND_URL+'/updateAppremovedRequestComplete', {idHistory, orderComplete, dataRequestExportPDF });
+                        axios.post(process.env.REACT_APP_BACKEND_URL+'/intoRequestHistory', { idHistory, idRequests: checkedIds.join(','), dateCreated: UpdateDateTime() });
                         this.getData();
                     })
                     .catch(error => {
