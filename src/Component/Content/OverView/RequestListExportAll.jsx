@@ -69,7 +69,7 @@ class RequestListExportAll extends Component {
             if (dataRequest) {
                 const { currentDate, currentDay } = this.props;
                 if (this._isMounted) {
-                    this.sortByDate(dataRequest.rows, currentDate, currentDay)
+                    this.sortByDate(dataRequest, currentDate, currentDay)
 
                 }
             }
