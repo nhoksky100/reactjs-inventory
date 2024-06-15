@@ -262,7 +262,7 @@ class RequestListExportAll extends Component {
                         {/* <RequestInto/> */}
                     </div>
                     <div className="head">
-                        <h3>Danh mục xuất Tất cả đơn</h3>
+                        <h3>Đơn yêu cầu xuất</h3>
 
 
                     </div>
