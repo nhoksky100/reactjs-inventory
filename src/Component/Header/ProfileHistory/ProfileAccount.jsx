@@ -46,7 +46,7 @@ class ProfileAccount extends Component {
         this._isMounted = true;
         try {
             const { tokenObj } = this.props || '';
-            console.log(tokenObj, 'tokenObj');
+            
 
             // const [dataMember, dataProfile] = await Promise.all([
             //     getdataMember(),
@@ -57,7 +57,7 @@ class ProfileAccount extends Component {
                    
                         if (this._isMounted) {
                             const dataMemberFil = (res.length > 0 && res.filter(item => item.id === tokenObj.id)) || [];
-                            console.log(dataMemberFil, 'dataMemberFil');
+                           
                             this.setState({
                                 dataMember: dataMemberFil,
                                 id: dataMemberFil.length > 0 && dataMemberFil[0].id,
