@@ -49,7 +49,7 @@ class NotificationList extends Component {
 
             if (dataNotification) {
                 if (this._isMounted) {
-                    this.setState({ dataNotification: dataNotification.rows });
+                    this.setState({ dataNotification: dataNotification });
                 }
             }
             if (dataImageProfile) {
