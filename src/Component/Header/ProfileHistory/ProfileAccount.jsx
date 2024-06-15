@@ -56,7 +56,7 @@ class ProfileAccount extends Component {
                 if(res.row){
                    
                         if (this._isMounted) {
-                            const dataMemberFil = (res.rows.length > 0 && res.rows.filter(item => item.id === tokenObj.id)) || [];
+                            const dataMemberFil = (res.length > 0 && res.filter(item => item.id === tokenObj.id)) || [];
                             console.log(dataMemberFil, 'dataMemberFil');
                             this.setState({
                                 dataMember: dataMemberFil,
