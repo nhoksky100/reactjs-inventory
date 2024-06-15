@@ -109,7 +109,7 @@ class Warehouse extends Component {
 
         getdataWarehouse().then((res) => {
             if (res) {
-                const updatedData = res.rows.map(item => {
+                const updatedData = res.map(item => {
                     const { intoWarehouseDate, warehouseResidual, warehouseExpectedOut, warehouseQuotaMin, warehouseQuotaMax } = item;
                     const warehouseStatus = calculateWarehouseStatus(intoWarehouseDate, warehouseResidual, warehouseExpectedOut, warehouseQuotaMin, warehouseQuotaMax, item.warehouseStatus);
                     return { ...item, warehouseStatus };
