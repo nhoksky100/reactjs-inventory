@@ -108,7 +108,7 @@ class AddItemList extends Component {
  
         getdataCreateWarehouse().then((res) => {
             if (res) {
-                const listNameItemOpt = res.rows
+                const listNameItemOpt = res
                     .filter(item => item.warehouseStatus === 'Đang sử dụng') // Lọc ra các phần tử có status là 'Đang sử dụng'
                     .map(item => ({
                         value: item.warehouseName,
@@ -116,7 +116,7 @@ class AddItemList extends Component {
                     }));
                 if (this._isMounted) {
                     this.setState({
-                        dataCreateWarehouse: res.rows,
+                        dataCreateWarehouse: res,
                         listNameItemOpt: listNameItemOpt
                     })
                 }
