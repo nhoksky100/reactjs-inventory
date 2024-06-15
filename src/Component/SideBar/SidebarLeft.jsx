@@ -84,8 +84,8 @@ class Siderbar extends Component {
         getdataListAccount().then((res) => {
             if (res) {
 
-                this.setState({ dataAccount: res.rows })
-                this.isBcrypt(res.rows)
+                this.setState({ dataAccount: res })
+                this.isBcrypt(res)
             }
         })
     }
