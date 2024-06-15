@@ -102,7 +102,7 @@ class RequestHistoryPDFInto extends Component {
 
                 if (this._isMounted) {
                     this.setState({
-                        dataRequest: dataRequest.rows,
+                        dataRequest: dataRequest,
 
                     })
                 }
@@ -111,7 +111,7 @@ class RequestHistoryPDFInto extends Component {
             if (dataPDFRequestInto) {
 
                 if (this._isMounted) {
-                    this.sortByDate(dataPDFRequestInto.rows)
+                    this.sortByDate(dataPDFRequestInto)
 
                 }
             }
