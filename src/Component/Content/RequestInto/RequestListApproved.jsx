@@ -58,7 +58,7 @@ class RequestListApproved extends Component {
         const { tokenObj } = this.props || [];
         getdataRequest().then((res) => {
             if (res) {
-                this.sortByDate(res.rows)
+                this.sortByDate(res)
                 // this.setState({ dataRequest: res.reverse() })
             }
         })
@@ -67,14 +67,14 @@ class RequestListApproved extends Component {
                 if (this._isMounted) {
 
                     this.setState({
-                        dataApproveDate: res.rows.reverse(),
+                        dataApproveDate: res.reverse(),
                     })
                 }
             }
         })
         getdataMember().then((res) => {
             if (res) {
-                res.rows.map((value) => {
+                res.map((value) => {
                     if (value.memberCode === tokenObj.accountCode) {
                         const isPermission = bcrypt.compareSync(value.memberPermission, tokenObj.accountPermission)
                         const memberName = value.memberName
@@ -93,7 +93,7 @@ class RequestListApproved extends Component {
                 })
                 if (this._isMounted) {
 
-                    this.setState({ dataMember: res.rows.reverse() })
+                    this.setState({ dataMember: res.reverse() })
                 }
             }
         })
