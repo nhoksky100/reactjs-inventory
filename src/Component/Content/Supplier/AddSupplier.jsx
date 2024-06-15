@@ -50,7 +50,7 @@ class AddSupplier extends Component {
                 let itemsCode = 'MH-' + randomId()
                 let id = randomId();
                 const isDuplicateitemsCode = (id) => {
-                    return res.rows.some(item => item.id === id);
+                    return res.some(item => item.id === id);
                 };
 
                 // Kiểm tra và tạo itemsCode mới nếu trùng lặp
@@ -60,8 +60,8 @@ class AddSupplier extends Component {
                 if (this._isMounted) {
 
                     this.setState({
-                        dataSupplier: res.rows.reverse(),
-                        rowAddIndex: res.rows.length && res.rows.length !== 0 ? res.rows.length + 1 : 1,
+                        dataSupplier: res.reverse(),
+                        rowAddIndex: res.length && res.length !== 0 ? res.length + 1 : 1,
                         itemsCode: itemsCode,
                         id: id
                     })
