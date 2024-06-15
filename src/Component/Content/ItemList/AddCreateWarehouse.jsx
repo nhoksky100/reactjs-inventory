@@ -33,14 +33,14 @@ class AddCreateWarehouse extends Component {
             if (res) {
                 let newWarehouseCode = 'MK-' + randomId();
                 let newId = randomId();
-                const isDuplicateId = (id) => res.rows.some(item => item.id === id);
+                const isDuplicateId = (id) => res.some(item => item.id === id);
 
                 while (isDuplicateId(newId)) {
                     newId = randomId();
                 }
 
                 this.setState({
-                    dataCreateWarehouse: res.rows.reverse(),
+                    dataCreateWarehouse: res.reverse(),
                     warehouseCode: newWarehouseCode,
                     id: newId
                 });
