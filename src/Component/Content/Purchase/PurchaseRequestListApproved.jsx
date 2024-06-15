@@ -131,7 +131,7 @@ class PurchaseRequestListApproved extends Component {
 
             if (dataListAccount) {
                 // Gọi hàm isBcryptPermission để xử lý quyền
-                await this.isBcryptPermission(dataListAccount.rows);
+                await this.isBcryptPermission(dataListAccount);
             }
             const { tokenObj } = this.props || [];
 
@@ -144,7 +144,7 @@ class PurchaseRequestListApproved extends Component {
                     let countId = 0;
                     const isDuplicateitemCode = (id) => {
 
-                        return dataRequest.rows.some(item => item.idHistory === id);
+                        return dataRequest.some(item => item.idHistory === id);
                     };
 
                     // Kiểm tra và tạo itemCode mới nếu trùng lặp
@@ -160,17 +160,17 @@ class PurchaseRequestListApproved extends Component {
                             idHistory: id
                         });
                     }
-                    this.sortByDate(dataRequest.rows)
+                    this.sortByDate(dataRequest)
                 }
             }
 
 
 
             if (dataSupplier) {
-                const supplierNames = dataSupplier.rows.map(supplier => ({ value: supplier.supplierName, label: supplier.supplierName }));
+                const supplierNames = dataSupplier.map(supplier => ({ value: supplier.supplierName, label: supplier.supplierName }));
                 if (this._isMounted) {
                     this.setState({
-                        dataSupplier: dataSupplier.rows.reverse(),
+                        dataSupplier: dataSupplier.reverse(),
                         supplierNames: supplierNames,
                         // supplierNamesTeamp: supplierNames,
                     })
@@ -183,7 +183,7 @@ class PurchaseRequestListApproved extends Component {
 
             if (dataApproveDate) {
                 if (this._isMounted) {
-                    this.setState({ dataApproveDate: dataApproveDate.rows })
+                    this.setState({ dataApproveDate: dataApproveDate })
                 }
 
             }
@@ -191,7 +191,7 @@ class PurchaseRequestListApproved extends Component {
 
             if (dataMember) {
 
-                dataMember.rows.map((value) => {
+                dataMember.map((value) => {
 
                     if (value.memberCode === tokenObj.accountCode) {
                         const isPermission = bcrypt.compareSync(value.memberPermission, tokenObj.accountPermission)
@@ -218,7 +218,7 @@ class PurchaseRequestListApproved extends Component {
 
                 if (this._isMounted) {
                     this.setState({
-                        dataMember: dataMember.rows,
+                        dataMember: dataMember,
 
                     })
                 }
