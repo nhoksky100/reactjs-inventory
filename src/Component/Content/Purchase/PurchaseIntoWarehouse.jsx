@@ -148,7 +148,7 @@ class PurchaseIntoWarehouse extends Component {
                 if (this._isMounted) {
 
                     this.setState({
-                        dataRequest: dataRequest.rows.reverse(),
+                        dataRequest: dataRequest.reverse(),
 
                     });
                 }
@@ -157,13 +157,13 @@ class PurchaseIntoWarehouse extends Component {
 
             if (dataRequest && dataOrderApprove) {
 
-                const dataApproved = dataRequest.rows.filter(requestItem => {
+                const dataApproved = dataRequest.filter(requestItem => {
                     if (requestItem.statusOrder === 'Đã duyệt' && parseInt(requestItem.orderComplete) === 2) {
                         return true; // Trả về true nếu orderStatus là 'Đã duyệt' và orderComplete là 2
                     }
                     return false; // Nếu orderStatus không phải 'Đã duyệt' hoặc orderComplete không phải 2, loại bỏ phần tử
                 }).map(requestItem => {
-                    const matchingApproveItems = dataOrderApprove.rows.filter(approveItem => {
+                    const matchingApproveItems = dataOrderApprove.filter(approveItem => {
                         return approveItem.idRequest === requestItem.id && approveItem.datePrint;
                     });
 
@@ -183,7 +183,7 @@ class PurchaseIntoWarehouse extends Component {
                     // Lọc và thêm cột mới vào dataApproved
                     const updatedDataApproved = dataApproved.map(approvedItem => {
                         // Tìm phần tử trong dataItemList có itemsCode bằng với orderCode của approvedItem
-                        const matchedItem = dataItemList.rows.find(item => item.itemsCode === approvedItem.orderCode);
+                        const matchedItem = dataItemList.find(item => item.itemsCode === approvedItem.orderCode);
                         if (matchedItem) {
                             // Nếu tìm thấy, thêm cột mới vào approvedItem với giá trị là itemsCommodities của matchedItem
                             return {
@@ -198,7 +198,7 @@ class PurchaseIntoWarehouse extends Component {
 
                     // Cập nhật state với dataItemList đã đảo ngược và dataApproved đã được cập nhật
                     this.setState({
-                        dataItemList: dataItemList.rows.reverse(),
+                        dataItemList: dataItemList.reverse(),
                         dataApproved: updatedDataApproved
                     });
                 }
@@ -208,37 +208,37 @@ class PurchaseIntoWarehouse extends Component {
 
             if (dataListAccount) {
                 // Gọi hàm isBcryptPermission để xử lý quyền
-                await this.isBcryptPermission(dataListAccount.rows);
+                await this.isBcryptPermission(dataListAccount);
             }
 
             if (dataRequestTeamp) {
                 if (this._isMounted) {
 
-                    this.setState({ dataRequestTeamp: dataRequestTeamp.rows });
+                    this.setState({ dataRequestTeamp: dataRequestTeamp });
                 }
             }
             if (dataMember) {
                 if (this._isMounted) {
 
-                    this.setState({ dataMember: dataMember.rows });
+                    this.setState({ dataMember: dataMember });
                 }
             }
             if (dataOrderApprove) {
                 if (this._isMounted) {
 
-                    this.setState({ dataOrderApprove: dataOrderApprove.rows });
+                    this.setState({ dataOrderApprove: dataOrderApprove });
                 }
             }
             if (dataWarehouse) {
                 if (this._isMounted) {
 
-                    this.setState({ dataWarehouse: dataWarehouse.rows });
+                    this.setState({ dataWarehouse: dataWarehouse });
                 }
             }
             if (dataDocument) {
                 if (this._isMounted) {
 
-                    const documentCode = dataDocument.rows.map(itemDocument => ({ value: itemDocument.documentCode, label: itemDocument.documentCode }));
+                    const documentCode = dataDocument.map(itemDocument => ({ value: itemDocument.documentCode, label: itemDocument.documentCode }));
 
                     this.setState({
                         // dataDocument: dataDocument.reverse(),
