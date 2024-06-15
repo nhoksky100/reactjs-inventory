@@ -168,14 +168,14 @@ class PurchaseRequestNotApprove extends Component {
             if (dataListAccount) {
 
                 // Gọi hàm isBcryptPermission để xử lý quyền
-                await this.isBcryptPermission(dataListAccount.rows);
+                await this.isBcryptPermission(dataListAccount);
             }
             const { tokenObj } = this.props || [];
 
             if (dataRequest) {
                 if (this._isMounted) {
 
-                    this.sortByDate(dataRequest.rows)
+                    this.sortByDate(dataRequest)
                     // const currentTodos = this.currentTodos(filteredData);
 
                     // this.setState({
@@ -188,10 +188,10 @@ class PurchaseRequestNotApprove extends Component {
 
 
             if (dataSupplier) {
-                const supplierNames = dataSupplier.rows.map(supplier => ({ value: supplier.supplierName, label: supplier.supplierName }));
+                const supplierNames = dataSupplier.map(supplier => ({ value: supplier.supplierName, label: supplier.supplierName }));
                 if (this._isMounted) {
                     this.setState({
-                        dataSupplier: dataSupplier.rows.reverse(),
+                        dataSupplier: dataSupplier.reverse(),
                         supplierNames: supplierNames,
                         // supplierNamesTeamp: supplierNames,
                     })
@@ -204,7 +204,7 @@ class PurchaseRequestNotApprove extends Component {
 
             if (dataApproveDate) {
                 if (this._isMounted) {
-                    this.setState({ dataApproveDate: dataApproveDate.rows })
+                    this.setState({ dataApproveDate: dataApproveDate })
                 }
 
             }
@@ -212,7 +212,7 @@ class PurchaseRequestNotApprove extends Component {
 
             if (dataMember) {
 
-                dataMember.rows.map((value) => {
+                dataMember.map((value) => {
 
                     if (value.memberCode === tokenObj.accountCode) {
                         const isPermission = bcrypt.compareSync(value.memberPermission, tokenObj.accountPermission)
@@ -238,7 +238,7 @@ class PurchaseRequestNotApprove extends Component {
                 })
                 if (this._isMounted) {
                     this.setState({
-                        dataMember: dataMember.rows,
+                        dataMember: dataMember,
                     })
                 }
 
@@ -247,7 +247,7 @@ class PurchaseRequestNotApprove extends Component {
 
                 let id = randomId();
                 const isDuplicateitemCode = (id) => {
-                    return dataApproveDate.rows.some(item => item.id === id);
+                    return dataApproveDate.some(item => item.id === id);
                 };
 
                 // Kiểm tra và tạo itemCode mới nếu trùng lặp
@@ -267,7 +267,7 @@ class PurchaseRequestNotApprove extends Component {
 
                 if (this._isMounted) {
                     this.setState({
-                        dataNotification: dataNotification.rows,
+                        dataNotification: dataNotification,
 
                     })
                 }
