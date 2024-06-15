@@ -60,7 +60,7 @@ class ItemList extends Component {
         getdataItemsList().then((res) => {
             if (res) {
                 // const initialRowStates = res.map(value => value.itemsStatus === 'Đang sử dụng');
-                this.sortByDate(res.rows)
+                this.sortByDate(res)
 
             }
         })
