@@ -187,6 +187,7 @@ const FormAccountCustomer = () => {
     const pathUrl = FormViewPathName() || '';
 
     const showFormProfile = (tokenObj) => {
+        console.log(pathUrl ,'pathUrl');
         if (!dataLoaded) {
             return <div className='loader'></div>;
         } else {
@@ -213,6 +214,7 @@ const FormAccountCustomer = () => {
     };
 
     const isShowForm = (tokenObj) => {
+        console.log(permission ,'permission');
         if (pathUrl && typeof pathUrl === 'string' && dataLoaded && permission) {
             console.log(pathUrl ,'pathUrl');
             switch (pathUrl) {
