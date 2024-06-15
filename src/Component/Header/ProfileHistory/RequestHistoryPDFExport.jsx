@@ -102,7 +102,7 @@ class RequestHistoryPDFExport extends Component {
                 if (this._isMounted) {
 
                     this.setState({
-                        dataRequestTransfer: dataRequestTransfer.rows,
+                        dataRequestTransfer: dataRequestTransfer,
 
                     })
                 }
@@ -111,7 +111,7 @@ class RequestHistoryPDFExport extends Component {
             if (dataPDFRequestExport) {
 
                 if (this._isMounted) {
-                    this.sortByDate(dataPDFRequestExport.rows)
+                    this.sortByDate(dataPDFRequestExport)
 
                 }
             }
