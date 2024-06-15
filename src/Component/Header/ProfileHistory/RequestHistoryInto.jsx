@@ -100,7 +100,7 @@ class RequestHistoryInto extends Component {
             if (dataRequest) {
                 if (this._isMounted) {
 
-                    this.sortByDate(dataRequest.rows)
+                    this.sortByDate(dataRequest)
                 }
             }
 
@@ -109,13 +109,13 @@ class RequestHistoryInto extends Component {
 
                 if (this._isMounted) {
 
-                    this.setState({ dataMember: dataMember.rows, dataLoaded: true })
+                    this.setState({ dataMember: dataMember, dataLoaded: true })
                 }
             }
             if (dataApproveDate) {
                 if (this._isMounted) {
 
-                    this.setState({ dataApproveDate: dataApproveDate.rows, dataLoaded: true })
+                    this.setState({ dataApproveDate: dataApproveDate, dataLoaded: true })
                 }
             }
 
@@ -123,7 +123,7 @@ class RequestHistoryInto extends Component {
             if (dataRequestHistory) {
                 if (this._isMounted) {
 
-                    this.setState({ dataRequestHistory: dataRequestHistory.rows, dataLoaded: true })
+                    this.setState({ dataRequestHistory: dataRequestHistory, dataLoaded: true })
                 }
             }
 
