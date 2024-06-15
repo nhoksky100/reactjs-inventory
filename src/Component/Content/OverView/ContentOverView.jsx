@@ -60,7 +60,7 @@ class ContentOverView extends Component {
 
         if (this._isMounted) {
 
-          this.setState({ totalDataMember: dataMember.rows.length })
+          this.setState({ totalDataMember: dataMember.length })
 
         }
       }
@@ -68,7 +68,7 @@ class ContentOverView extends Component {
       if (dataItems) {
 
         if (this._isMounted) {
-          const dataFillter = dataItems.rows.filter((item) => item.itemsStatus === 'Đang sử dụng')
+          const dataFillter = dataItems.filter((item) => item.itemsStatus === 'Đang sử dụng')
           this.setState({ totalDataItems: dataFillter.length })
 
         }
@@ -76,7 +76,7 @@ class ContentOverView extends Component {
       if (dataIntoWarehouse) {
 
         if (this._isMounted) {
-          const totalIntoMoney = dataIntoWarehouse.rows
+          const totalIntoMoney = dataIntoWarehouse
             .filter(item => item.intoMoney)
             .reduce((acc, item) => parseFloat(acc) + parseFloat(item.intoMoney), 0);
 
