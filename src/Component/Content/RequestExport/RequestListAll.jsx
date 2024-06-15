@@ -148,13 +148,13 @@ class RequestListAll extends Component {
 
             if (dataListAccount) {
                 // Gọi hàm isBcryptPermission để xử lý quyền
-                await this.isBcryptPermission(dataListAccount.rows);
+                await this.isBcryptPermission(dataListAccount);
             }
             const { tokenObj } = this.props || [];
 
             if (dataRequest) {
                 if (this._isMounted) {
-                    this.sortByDate(dataRequest.rows)
+                    this.sortByDate(dataRequest)
 
                 }
             }
@@ -163,7 +163,7 @@ class RequestListAll extends Component {
 
             if (dataMember) {
 
-                dataMember.rows.map((value) => {
+                dataMember.map((value) => {
 
                     if (value.memberCode === tokenObj.accountCode) {
                         const isPermission = bcrypt.compareSync(value.memberPermission, tokenObj.accountPermission)
@@ -196,7 +196,7 @@ class RequestListAll extends Component {
                 // }
                 if (this._isMounted) {
                     this.setState({
-                        dataMember: dataMember.rows,
+                        dataMember: dataMember,
 
 
                     })
@@ -207,7 +207,7 @@ class RequestListAll extends Component {
 
                 if (this._isMounted) {
                     this.setState({
-                        dataRequestTransferHistory: dataRequestTransferHistory.rows.reverse(),
+                        dataRequestTransferHistory: dataRequestTransferHistory.reverse(),
 
                     })
                 }
@@ -216,7 +216,7 @@ class RequestListAll extends Component {
 
                 if (this._isMounted) {
                     this.setState({
-                        dataTransferExportApprove: dataTransferExportApprove.rows.reverse(),
+                        dataTransferExportApprove: dataTransferExportApprove.reverse(),
 
                     })
                 }
