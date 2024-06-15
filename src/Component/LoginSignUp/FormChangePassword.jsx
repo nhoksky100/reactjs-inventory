@@ -65,7 +65,7 @@ class FormChangePassword extends Component {
             if (res) {
 
                 const hashEmail = localStorage.getItem('emailCustomer') || ' '
-                res.rows.map((value) => {
+                res.map((value) => {
                     const isEmail = this.checkBcrypt(value.accountEmail, hashEmail)
 
                     if (isEmail) {
