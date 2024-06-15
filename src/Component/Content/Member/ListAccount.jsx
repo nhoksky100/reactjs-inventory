@@ -60,7 +60,7 @@ class ListAccount extends Component {
         getdataListAccount().then((res) => {
             if (res) {
                 if (this._isMounted) {
-                    this.sortByDate(res.rows)
+                    this.sortByDate(res)
                 }
             }
         })
