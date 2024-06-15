@@ -52,7 +52,7 @@ class Document extends Component {
         getdataDocument().then((res) => {
             if (res) {
                 // const initialRowStates = res.map(value => value.supplierStatus === 'Đang sử dụng');
-                this.sortByDate(res.rows)
+                this.sortByDate(res)
 
             }
         })
