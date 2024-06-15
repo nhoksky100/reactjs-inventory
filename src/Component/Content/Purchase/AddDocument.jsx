@@ -45,7 +45,7 @@ class AddDocument extends Component {
 
                 let id = randomId();
                 const isDuplicateitemsCode = (id) => {
-                    return res.rows.some(item => item.id === id);
+                    return res.some(item => item.id === id);
                 };
 
                 // Kiểm tra và tạo itemsCode mới nếu trùng lặp
@@ -54,7 +54,7 @@ class AddDocument extends Component {
                 }
                 if (this._isMounted) {
                     this.setState({
-                        dataDocument: res.rows.reverse(),
+                        dataDocument: res.reverse(),
                         id: id
                     })
                 }
