@@ -106,7 +106,7 @@ class PasswordRetrieval extends Component {
         try {
             const res = await getDataAccountCustomer();
 
-            res.rows.forEach((value) => {
+            res.forEach((value) => {
                 if (value.accountEmail === email) {
                     this.setState({ dataAccountCustomer: value })
                     flagExist = true;
