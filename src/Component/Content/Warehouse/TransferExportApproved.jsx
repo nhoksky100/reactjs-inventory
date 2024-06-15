@@ -113,7 +113,7 @@ class TransferExportApproved extends Component {
 
             if (dataListAccount) {
                 // Gọi hàm isBcryptPermission để xử lý quyền
-                await this.isBcryptPermission(dataListAccount.rows);
+                await this.isBcryptPermission(dataListAccount);
             }
             const { tokenObj } = this.props || [];
 
@@ -123,7 +123,7 @@ class TransferExportApproved extends Component {
                     let countId = 0;
                     const isDuplicateitemCode = (id) => {
 
-                        return dataRequest.rows.some(item => item.idHistory === id);
+                        return dataRequest.some(item => item.idHistory === id);
                     };
 
                     // Kiểm tra và tạo itemCode mới nếu trùng lặp
@@ -136,7 +136,7 @@ class TransferExportApproved extends Component {
                         idHistory: id,
 
                     })
-                    const filteredData = dataRequest.rows.filter(value => {
+                    const filteredData = dataRequest.filter(value => {
 
                         // const pointApprove = value.orderPointApprove !== null ? value.orderPointApprove.split(',') : '';
                         return value.requestTransferStatus === 'Đã duyệt' && parseInt(value.requestTransferComplete) === 1
@@ -149,7 +149,7 @@ class TransferExportApproved extends Component {
 
             if (dataMember) {
 
-                dataMember.rows.map((value) => {
+                dataMember.map((value) => {
 
                     if (value.memberCode === tokenObj.accountCode) {
                         const isPermission = bcrypt.compareSync(value.memberPermission, tokenObj.accountPermission)
@@ -173,7 +173,7 @@ class TransferExportApproved extends Component {
 
                 let id = randomId();
                 const isDuplicateitemCode = (id) => {
-                    return dataMember.rows.some(item => item.id === id);
+                    return dataMember.some(item => item.id === id);
                 };
 
                 // Kiểm tra và tạo itemCode mới nếu trùng lặp
@@ -182,7 +182,7 @@ class TransferExportApproved extends Component {
                 }
                 if (this._isMounted) {
                     this.setState({
-                        dataMember: dataMember.rows,
+                        dataMember: dataMember,
 
 
                     })
