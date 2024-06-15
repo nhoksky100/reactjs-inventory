@@ -97,7 +97,7 @@ class RequestListIntoAll extends Component {
 
                 if (this._isMounted) {
 
-                    this.sortByDate(dataRequest.rows, currentDate, currentDay)
+                    this.sortByDate(dataRequest, currentDate, currentDay)
 
                 }
             }
