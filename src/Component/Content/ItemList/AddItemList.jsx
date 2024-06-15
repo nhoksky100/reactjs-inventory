@@ -52,7 +52,7 @@ class AddItemList extends Component {
         getdataAccount().then((res) => {
             if(res){
                 
-                res.rows.map((value) => {
+                res.map((value) => {
     
                     if (tokenObj.id === value.id) {
                         const isPermission = bcrypt.compareSync(value.accountPermission, tokenObj.accountPermission);
@@ -86,7 +86,7 @@ class AddItemList extends Component {
                 let itemsCode = 'MH-' + randomId()
                 let id = randomId();
                 const isDuplicateitemsCode = (id) => {
-                    return res.rows.some(item => item.id === id);
+                    return res.some(item => item.id === id);
                 };
 
                 // Kiểm tra và tạo itemsCode mới nếu trùng lặp
@@ -96,7 +96,7 @@ class AddItemList extends Component {
                 if (this._isMounted) {
 
                     this.setState({
-                        dataItemsList: res.rows.reverse(),
+                        dataItemsList: res.reverse(),
 
                         itemsCode: itemsCode,
                         id: id
