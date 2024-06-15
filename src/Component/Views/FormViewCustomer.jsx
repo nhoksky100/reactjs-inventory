@@ -121,16 +121,16 @@ const FormAccountCustomer = () => {
     const getData = () => {
         isMounted.current = true;
         getdataListAccount().then((res) => {
-            if (res.rows && isMounted.current) {
-                setDataAccount(res.rows);
+            if (res && isMounted.current) {
+                setDataAccount(res);
                 setDataLoaded(true);
-                isBcrypt(res.rows);
+                isBcrypt(res);
             }
         });
         getdataMember().then((res) => {
             const tokenObj = getCookie('loginObject') || '';
-            if (res.rows && tokenObj) {
-                res.rows.forEach((value) => {
+            if (res && tokenObj) {
+                res.forEach((value) => {
                     if (value.memberCode === tokenObj.codeToken.accountCode) {
                         const department = value.memberDepartment;
                         const memberName = value.memberName;
