@@ -53,7 +53,7 @@ class ProfileAccount extends Component {
             //     getDataImageProfile(),
             // ]);
             getdataMember().then((res)=>{
-                if(res.row){
+                if(res){
                    
                         if (this._isMounted) {
                             const dataMemberFil = (res.length > 0 && res.filter(item => item.id === tokenObj.id)) || [];
