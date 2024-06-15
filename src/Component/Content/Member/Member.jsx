@@ -65,7 +65,7 @@ class Member extends Component {
             if (res) {
 
                 // const initialRowStates = res.map(value => value.memberStatus === 'Đang sử dụng');
-                this.sortByDate(res.rows)
+                this.sortByDate(res)
 
             }
         })
