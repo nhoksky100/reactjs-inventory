@@ -126,13 +126,13 @@ class RequestListNotApprove extends Component {
 
             if (dataListAccount) {
                 // Gọi hàm isBcryptPermission để xử lý quyền
-                await this.isBcryptPermission(dataListAccount.rows);
+                await this.isBcryptPermission(dataListAccount);
             }
             const { tokenObj } = this.props || [];
 
             if (dataRequest) {
                 if (this._isMounted) {
-                    const filteredData = dataRequest.rows.filter(value => {
+                    const filteredData = dataRequest.filter(value => {
 
                         // const pointApprove = value.orderPointApprove !== null ? value.orderPointApprove.split(',') : '';
                         return value.requestTransferStatus === 'Chờ duyệt' && parseInt(value.requestTransferComplete) === 0
@@ -144,7 +144,7 @@ class RequestListNotApprove extends Component {
 
             if (dataMember) {
 
-                dataMember.rows.map((value) => {
+                dataMember.map((value) => {
 
                     if (value.memberCode === tokenObj.accountCode) {
                         const isPermission = bcrypt.compareSync(value.memberPermission, tokenObj.accountPermission)
@@ -168,7 +168,7 @@ class RequestListNotApprove extends Component {
 
                 let id = randomId();
                 const isDuplicateitemCode = (id) => {
-                    return dataMember.rows.some(item => item.id === id);
+                    return dataMember.some(item => item.id === id);
                 };
 
                 // Kiểm tra và tạo itemCode mới nếu trùng lặp
@@ -177,7 +177,7 @@ class RequestListNotApprove extends Component {
                 }
                 if (this._isMounted) {
                     this.setState({
-                        dataMember: dataMember.rows,
+                        dataMember: dataMember,
                         idApproveReturn: id,
                         idApproveDate: id,
 
@@ -188,7 +188,7 @@ class RequestListNotApprove extends Component {
 
             if (dataNotification) {
                 if (this._isMounted) {
-                    this.setState({ dataNotification: dataNotification.rows })
+                    this.setState({ dataNotification: dataNotification })
                 }
             }
             // Sau khi tất cả dữ liệu đã được cập nhật, gọi updateNewRowDataListFromDataSet
