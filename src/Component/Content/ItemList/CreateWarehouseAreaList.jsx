@@ -57,7 +57,7 @@ class CreateWarehouseAreaList extends Component {
         this._isMounted = true
         getdataCreateWarehouse().then((res) => {
             if (res) {
-                this.sortByDate(res.rows)
+                this.sortByDate(res)
 
             }
         })
