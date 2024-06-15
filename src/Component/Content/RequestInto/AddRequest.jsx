@@ -131,7 +131,7 @@ class AddRequest extends Component {
             if (dataRequest) {
                 let id = randomId();
                 const isDuplicateitemCode = (id) => {
-                    return dataRequest.rows.some(item => item.id === id);
+                    return dataRequest.some(item => item.id === id);
                 };
 
                 // Kiểm tra và tạo itemCode mới nếu trùng lặp
@@ -141,7 +141,7 @@ class AddRequest extends Component {
                 if (this._isMounted) {
 
                     this.setState({
-                        dataRequest: dataRequest.rows.reverse(),
+                        dataRequest: dataRequest.reverse(),
                         id: id
                     });
                 }
@@ -149,7 +149,7 @@ class AddRequest extends Component {
             }
 
             if (dataItemList) {
-                // const idCounter = dataItemList.rows.length && dataItemList.rows.length !== 0 ? dataItemList.rows.length + 1 : 1;
+                // const idCounter = dataItemList.length && dataItemList.length !== 0 ? dataItemList.length + 1 : 1;
                 // const listNameItemsOpt = dataItemList
                 //     .filter(item => item.itemsStatus === 'Đang sử dụng') // Lọc ra các phần tử có status là 'Đang sử dụng'
                 //     .map(item => ({
@@ -160,7 +160,7 @@ class AddRequest extends Component {
                 if (this._isMounted) {
 
                     this.setState({
-                        dataItemList: dataItemList.rows.reverse(),
+                        dataItemList: dataItemList.reverse(),
                         // idCounter: idCounter,
                         // listNameItemsOpt: listNameItemsOpt
                     });
@@ -170,30 +170,30 @@ class AddRequest extends Component {
 
             if (dataListAccount) {
                 // Gọi hàm isBcryptPermission để xử lý quyền
-                await this.isBcryptPermission(dataListAccount.rows);
+                await this.isBcryptPermission(dataListAccount);
             }
 
             if (dataRequestTeamp) {
                 if (this._isMounted) {
 
-                    this.setState({ dataRequestTeamp: dataRequestTeamp.rows });
+                    this.setState({ dataRequestTeamp: dataRequestTeamp });
                 }
             }
             if (dataMember) {
                 if (this._isMounted) {
 
-                    this.setState({ dataMember: dataMember.rows });
+                    this.setState({ dataMember: dataMember });
                 }
             }
             if (dataWarehouse) {
                 if (this._isMounted) {
-                    const filteredWarehouseData = dataWarehouse.rows.filter(item => item.warehouseStatus !== 'Không sử dụng' && item.warehouseStatus !== 'Không dùng');
+                    const filteredWarehouseData = dataWarehouse.filter(item => item.warehouseStatus !== 'Không sử dụng' && item.warehouseStatus !== 'Không dùng');
                     this.setState({ dataWarehouse: filteredWarehouseData });
                 }
             }
             if (dataNotification) {
                 if (this._isMounted) {
-                    this.setState({ dataNotification: dataNotification.rows });
+                    this.setState({ dataNotification: dataNotification });
                 }
             }
 
