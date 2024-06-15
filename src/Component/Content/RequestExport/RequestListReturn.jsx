@@ -128,13 +128,13 @@ class RequestListReturn extends Component {
 
             if (dataListAccount) {
                 // Gọi hàm isBcryptPermission để xử lý quyền
-                await this.isBcryptPermission(dataListAccount.rows);
+                await this.isBcryptPermission(dataListAccount);
             }
             const { tokenObj } = this.props || [];
 
             if (dataRequest) {
                 if (this._isMounted) {
-                    const filteredData = dataRequest.rows.filter(value => {
+                    const filteredData = dataRequest.filter(value => {
 
                         // const pointApprove = value.orderPointApprove !== null ? value.orderPointApprove.split(',') : '';
                         return value.requestTransferStatus === 'Từ chối'
@@ -147,7 +147,7 @@ class RequestListReturn extends Component {
 
             if (dataMember) {
 
-                dataMember.rows.map((value) => {
+                dataMember.map((value) => {
 
                     if (value.memberCode === tokenObj.accountCode) {
                         const isPermission = bcrypt.compareSync(value.memberPermission, tokenObj.accountPermission)
@@ -180,7 +180,7 @@ class RequestListReturn extends Component {
                 // }
                 if (this._isMounted) {
                     this.setState({
-                        dataMember: dataMember.rows,
+                        dataMember: dataMember,
 
 
                     })
@@ -190,7 +190,7 @@ class RequestListReturn extends Component {
 
             if (dataTransferExportApprove) {
                 if (this._isMounted) {
-                    this.setState({ dataTransferExportApprove: dataTransferExportApprove.rows })
+                    this.setState({ dataTransferExportApprove: dataTransferExportApprove })
                 }
             }
             // Sau khi tất cả dữ liệu đã được cập nhật, gọi updateNewRowDataListFromDataSet
