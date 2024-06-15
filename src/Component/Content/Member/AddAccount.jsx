@@ -46,8 +46,8 @@ class AddAccount extends Component {
                 if(this._isMounted){
 
                     this.setState({
-                        dataAccount: res.rows.reverse(),
-                        rowAddIndex: res.rows.length && res.rows.length !== 0 && res.rows.length + 1
+                        dataAccount: res.reverse(),
+                        rowAddIndex: res.length && res.length !== 0 && res.length + 1
                     })
                 }
             }
@@ -58,7 +58,7 @@ class AddAccount extends Component {
                 if(this._isMounted){
 
                     this.setState({
-                        dataMember: res.rows.reverse(),
+                        dataMember: res.reverse(),
                         // rowAddIndex: res.length && res.length !== 0 && res.length + 1
                     })
                 }
