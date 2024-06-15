@@ -59,7 +59,7 @@ class LoginCustomer extends Component {
     }
     getData = () => {
         getdataAccount().then((res) => {
-             console.log(res, 'res 3');
+            
             if (this._isMounted) {
 
                 this.setState({ dataAccount: res })
@@ -126,9 +126,6 @@ class LoginCustomer extends Component {
     handleClickLogin = () => {
         const { dataAccount, username, password } = this.state;
 
-       
-        console.log(dataAccount, 'dataAccount a');
-        console.log(dataAccount, 'dataAccount b');
         let flagLogin = false;
 
         if (!dataAccount || dataAccount.length === 0) {
@@ -143,7 +140,7 @@ class LoginCustomer extends Component {
           
             if ((username === value.accountUserName || username === value.accountEmail) && value.accountStatus === 'Đang sử dụng') {
                 let dataLogin = value;
-                console.log(value,'value');
+               
                 // Trả về một promise từ mỗi yêu cầu axios.post
                 return axios.post(process.env.REACT_APP_BACKEND_URL+'/login_Account', { dataLogin, username, password })
                     .then((res) => {
