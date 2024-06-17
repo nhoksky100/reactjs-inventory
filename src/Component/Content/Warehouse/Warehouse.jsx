@@ -116,11 +116,10 @@ class Warehouse extends Component {
                 });
                 if (this._isMounted) {
                     this.props.getDataSearch(updatedData)
-
+                     const updatedDataTemp = [...updatedData].reverse();
                     this.setState({
-                        dataWarehouse: updatedData.reverse(),
-                        // totalPage: updatedData.length,
-
+                        dataWarehouse: updatedDataTemp,
+                       
                     });
 
                 }
