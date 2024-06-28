@@ -241,7 +241,7 @@ class RequestListIntoAll extends Component {
 
     showFormRow = () => {
         const { dataRequest } = this.state;
-        if (dataRequest) {
+        if (dataRequest.length>0) {
             const currentTodos = this.currentTodos(dataRequest)
             return currentTodos.map((value, key) => {
                 return (
@@ -265,7 +265,7 @@ class RequestListIntoAll extends Component {
                 )
 
             })
-        }
+        } return null
     }
 
 
