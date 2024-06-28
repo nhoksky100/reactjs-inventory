@@ -25,6 +25,10 @@ const noteInitialState = {
   imageProfile: '',
   dateTimeStart: '',
   dateTimeEnd: new Date().toISOString(),
+  countMessage:0,
+  isNodeSend:false,
+  isNodeForm:false,
+  dataReceive:[],
 };
 
 // Create slice
@@ -104,6 +108,18 @@ const allSlice = createSlice({
     isUpdateSettingStore: (state, action) => {
       state.isUpdateSetting = action.payload;
     },
+    countMessage: (state, action) => {
+      state.countMessage = action.payload;
+    },
+    isNodeSend: (state, action) => {
+      state.isNodeSend = action.payload;
+    },
+    isNodeForm: (state, action) => {
+      state.isNodeForm = action.payload;
+    },
+    dataReceive: (state, action) => {
+      state.dataReceive = action.payload;
+    },
   },
 });
 
@@ -132,6 +148,10 @@ export const {
   isChangePassword,
   reSendEmail,
   isUpdateSettingStore,
+  countMessage,
+  isNodeSend,
+  isNodeForm,
+  dataReceive,
 } = allSlice.actions;
 
 // Create store
