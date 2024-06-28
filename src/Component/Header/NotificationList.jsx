@@ -49,7 +49,28 @@ class NotificationList extends Component {
 
             if (dataNotification) {
                 if (this._isMounted) {
-                    this.setState({ dataNotification: dataNotification });
+                    const dataFilter = dataNotification.filter(item => {
+                        // Kiểm tra các điều kiện lọc
+
+                        if (item.tab === 'Nhập') {
+
+                            // Người tạo và kiểm tra thông báo người duyệt
+                            if (!this.checkPermissionApprove(item.pointApprovedInto, item)) {
+
+                                return true;
+                            }
+                        }
+                        else if (item.tab === 'Xuất') {
+                            if (!this.checkPermissionApproveExport(item.pointApprovedExport, item))
+                                return true
+                        }
+                        // if((parseInt(item.isApproved) === 1 && item.tab==='Nhập')){
+
+                        // }
+
+                    })
+                   
+                    this.setState({ dataNotification: dataFilter });
                 }
             }
             if (dataImageProfile) {
@@ -211,26 +232,7 @@ class NotificationList extends Component {
         let dataFilter = []
 
 
-        dataFilter = dataNotification.filter(item => {
-            // Kiểm tra các điều kiện lọc
-
-            if (item.tab === 'Nhập') {
-
-                // Người tạo và kiểm tra thông báo người duyệt
-                if (!this.checkPermissionApprove(item.pointApprovedInto, item)) {
-
-                    return true;
-                }
-            }
-            else if (item.tab === 'Xuất') {
-                if (!this.checkPermissionApproveExport(item.pointApprovedExport, item))
-                    return true
-            }
-            // if((parseInt(item.isApproved) === 1 && item.tab==='Nhập')){
-
-            // }
-
-        }).map(item => {
+        dataFilter = dataNotification.map(item => {
             // Tìm đối tượng tương ứng trong dataImageProfile dựa trên id
             let profile = dataImageProfile.find(profileItem => profileItem.id === item.idMember);
 
@@ -245,6 +247,7 @@ class NotificationList extends Component {
             dataFilter = dataFilter.filter(item => parseInt(item.isRead) === 0);
 
         }
+
         if (dataFilter.length > 0) {
             // return dataNotification.map
             return dataFilter.map((value, key) => {
@@ -332,7 +335,7 @@ class NotificationList extends Component {
         if (redirectTo) {
             return <Navigate to={redirectTo} />;
         }
-
+       
         return (
             <div id='titleNotification'>
 
@@ -399,4 +402,3 @@ function mapDispatchToProps(dispatch) {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotificationList);
-
