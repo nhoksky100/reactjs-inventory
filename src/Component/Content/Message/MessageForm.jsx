@@ -6,7 +6,7 @@ import ReceiveMessage from './ReceiveMessage';
 import axios from 'axios';
 import { countMessage, isNodeForm, isNodeSend } from '../../../StoreRcd';
 
-const getdataMessage = () => axios.get('/getMessage').then((res) => res.data)
+const getdataMessage = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMessage').then((res) => res.data)
 
 class MessageForm extends Component {
     constructor(props) {
