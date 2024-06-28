@@ -217,7 +217,7 @@ class RequestListExportAll extends Component {
 
     showFormRow = () => {
         const { dataRequest } = this.state;
-        if (dataRequest) {
+        if (dataRequest.length>0) {
 
 
             const currentTodos = this.currentTodos(dataRequest)
