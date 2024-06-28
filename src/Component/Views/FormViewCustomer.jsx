@@ -37,6 +37,7 @@ import {
     departmentStore,
     isUpdateSettingStore
 } from '../../StoreRcd';
+import MessageForm from '../Content/Message/MessageForm';
 
 const getDataImageProfile = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/imageFile').then((res) => res.data);
 const getdataListAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data);
@@ -56,18 +57,6 @@ const FormAccountCustomer = () => {
     const [dataLoaded, setDataLoaded] = useState(false);
     const isMounted = useRef(true);
 
-
-
-    function FormViewPathName() {
-        const location = useLocation();
-        const [pathname, setPathname] = useState(location.pathname);
-
-        useEffect(() => {
-            setPathname(location.pathname);
-        }, [location.pathname]);
-
-        return pathname;
-    }
     const dispatch = useDispatch();
     const imageProfileState = useSelector((state) => state.allReducer.imageProfile);
     const isUpdateSetting = useSelector((state) => state.allReducer.isUpdateSetting);
@@ -100,7 +89,6 @@ const FormAccountCustomer = () => {
             setImageProfile(imageProfileState);
         }
     }, [imageProfileState]);
-
 
     const handleResize = () => {
         updateHeight();
@@ -182,12 +170,15 @@ const FormAccountCustomer = () => {
         }
     };
 
-
+    function FormViewPathName() {
+        const location = useLocation();
+        const pathname = location.pathname;
+        return pathname;
+    }
 
     const pathUrl = FormViewPathName() || '';
 
     const showFormProfile = (tokenObj) => {
-       
         if (!dataLoaded) {
             return <div className='loader'></div>;
         } else {
@@ -214,9 +205,7 @@ const FormAccountCustomer = () => {
     };
 
     const isShowForm = (tokenObj) => {
-        
         if (pathUrl && typeof pathUrl === 'string' && dataLoaded && permission) {
-            
             switch (pathUrl) {
                 case '/':
                     return <ContentOverView tokenObj={tokenObj} />;
@@ -339,6 +328,8 @@ const FormAccountCustomer = () => {
                     return <Request pathUrl={pathUrl} tokenObj={tokenObj} />;
                 case '/profile-account':
                     return <ProfileForm tokenObj={tokenObj} imageProfile={imageProfile} />;
+                case '/message':
+                    return <MessageForm tokenObj={tokenObj} imageProfile={imageProfile} />;
                 default:
                     break;
             }
