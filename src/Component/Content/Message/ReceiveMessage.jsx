@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import { dataReceive, isNodeForm, isNodeSend } from '../../../StoreRcd';
 import ReadMore from '../../ReadMore/ReadMore';
 
-const getdataMessage = () => axios.get('/getMessage').then((res) => res.data)
+const getdataMessage = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMessage').then((res) => res.data)
 
-const getDataImageProfile = () => axios.get('/imageFile').then((res) => res.data);
+const getDataImageProfile = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/imageFile').then((res) => res.data);
 
 class ReceiveMessage extends Component {
     constructor(props) {
@@ -51,7 +51,7 @@ class ReceiveMessage extends Component {
             const updatedMessageStatus = messageStatusArray.join(',');
 
             // Trả về một Promise từ axios.post
-            return axios.post('/updateMessageStatus', {
+            return axios.post(process.env.REACT_APP_BACKEND_URL+'/updateMessageStatus', {
                 id: message.id,
                 messageStatus: updatedMessageStatus
             });
