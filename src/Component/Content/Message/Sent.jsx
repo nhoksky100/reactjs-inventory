@@ -4,9 +4,9 @@ import imageDefault from '../../Header/imageDefault';
 import Pagination from 'react-js-pagination';
 import ReadMore from '../../ReadMore/ReadMore'; // read more describe
 
-// const getdataMessage = () => axios.get('/getMessage').then((res) => res.data)
+// const getdataMessage = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMessage').then((res) => res.data)
 
-// const getDataImageProfile = () => axios.get('/imageFile').then((res) => res.data);
+// const getDataImageProfile = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/imageFile').then((res) => res.data);
 
 export default class Sent extends Component {
     constructor(props) {
