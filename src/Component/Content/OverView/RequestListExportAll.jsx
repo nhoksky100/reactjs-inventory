@@ -87,30 +87,58 @@ class RequestListExportAll extends Component {
     }
     // format date
     formatDateTime = (dateTimeStr) => {
-        // Tách ngày và giờ từ chuỗi
-        if (!dateTimeStr) {
-            // Nếu dateTimeStr là null hoặc undefined, trả về null
-            return null;
-        }
-        let [datePart, timePart] = dateTimeStr.split(' - ');
-
-        // Tách ngày, tháng, năm
-        let [day, month, year] = datePart.split('/').map(Number);
-
-        // Tách giờ, phút và AM/PM
-        let [time, period] = timePart.split(' ');
-        let [hours, minutes] = time.split(':').map(Number);
-
-        // Điều chỉnh giờ theo AM/PM
-        if (period === 'PM' && hours !== 12) {
-            hours += 12;
-        } else if (period === 'AM' && hours === 12) {
-            hours = 0;
-        }
-
-        // Tạo đối tượng Date
-        return new Date(year, month - 1, day, hours, minutes);
+    // Tách ngày và giờ từ chuỗi
+    if (!dateTimeStr) {
+        // Nếu dateTimeStr là null hoặc undefined, trả về null
+        return null;
     }
+
+    // Kiểm tra và tách dateTimeStr
+    let datePart, timePart;
+    if (dateTimeStr.includes(' - ')) {
+        [datePart, timePart] = dateTimeStr.split(' - ');
+    } else {
+        console.error("dateTimeStr không chứa ' - ' để tách ngày và giờ.");
+        return null;
+    }
+
+    // Kiểm tra và tách datePart
+    let day, month, year;
+    if (datePart.includes('/')) {
+        [day, month, year] = datePart.split('/').map(Number);
+    } else {
+        console.error("datePart không chứa '/' để tách ngày, tháng, năm.");
+        return null;
+    }
+
+    // Kiểm tra và tách timePart
+    let time, period;
+    if (timePart.includes(' ')) {
+        [time, period] = timePart.split(' ');
+    } else {
+        console.error("timePart không chứa ' ' để tách giờ và AM/PM.");
+        return null;
+    }
+
+    // Kiểm tra và tách time
+    let hours, minutes;
+    if (time.includes(':')) {
+        [hours, minutes] = time.split(':').map(Number);
+    } else {
+        console.error("time không chứa ':' để tách giờ và phút.");
+        return null;
+    }
+
+    // Điều chỉnh giờ theo AM/PM
+    if (period === 'PM' && hours !== 12) {
+        hours += 12;
+    } else if (period === 'AM' && hours === 12) {
+        hours = 0;
+    }
+
+    // Tạo đối tượng Date
+    return new Date(year, month - 1, day, hours, minutes);
+}
 
 
     // Hàm tìm chuỗi con giống nhau trong một chuỗi và một mảng các chuỗi
