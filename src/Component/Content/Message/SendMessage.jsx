@@ -9,9 +9,9 @@ import { toast } from 'react-toastify';
 import { UpdateDateTime } from '../../UpdateDateTime';
 import Sent from './Sent';
 import { isNodeSend } from '../../../StoreRcd';
-const getDataMember = () => axios.get('/getMember').then((res) => res.data)
-const getDataImageProfile = () => axios.get('/imageFile').then((res) => res.data);
-const getdataMessage = () => axios.get('/getMessage').then((res) => res.data)
+const getDataMember = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMember').then((res) => res.data)
+const getDataImageProfile = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/imageFile').then((res) => res.data);
+const getdataMessage = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMessage').then((res) => res.data)
 
 class SendMessage extends Component {
     constructor(props) {
@@ -231,7 +231,7 @@ class SendMessage extends Component {
                 for (let i = 0; i < idReceiver.length; i++) {
                     messageStatus[i] = 'True'
                 }
-                axios.post('/messageSendAdd', {
+                axios.post(process.env.REACT_APP_BACKEND_URL+'/messageSendAdd', {
                     id,
                     idReceiver: idReceiver.length > 0 ? idReceiver.join(",") : '',
                     idSend: tokenObj.id,
