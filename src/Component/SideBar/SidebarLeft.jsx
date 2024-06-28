@@ -10,6 +10,7 @@ import axios from 'axios';
 
 // import { NavLink } from 'react-router-dom';
 const getdataListAccount = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getAccount').then((res) => res.data)
+const getdataMessage = () => axios.get(process.env.REACT_APP_BACKEND_URL+'/getMessage').then((res) => res.data)
 
 class Siderbar extends Component {
     constructor(props) {
@@ -19,12 +20,15 @@ class Siderbar extends Component {
             isLogout: false,
             dataAccount: [],
             permission: '',
+            countMessage: 0,
             // tokenObj: {}
-            
-            lastClickedIndex:'',
+
+            lastClickedIndex: '',
         }
+        this._isMounted = false;
     }
     componentDidMount() {
+        this._isMounted = true;
         // const username = 'loginObject'; // Thay thế bằng tên cookie bạn đã sử dụng
         // const cookies = new Cookies()
         // const tokenObj = cookies.get(username);
@@ -32,15 +36,18 @@ class Siderbar extends Component {
         //     this.setState({ tokenObj: tokenObj.codeToken })
         // }
         const { pathname } = window.location;
-      
+
         this.activeClass()
         this.getData()
         this.isBcrypt()
     }
+    componentWillUnmount = () => {
+        this._isMounted = false;
+    }
 
     activeClass = () => {
         const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
-        
+
         if (allSideMenu && allSideMenu.length !== 0) {
             allSideMenu.forEach(item => {
                 const li = item.parentElement;
@@ -64,7 +71,7 @@ class Siderbar extends Component {
 
     async isBcrypt(dataAccount) {
         const { tokenObj } = this.props;
-       
+
         let permission = '';
 
         if (dataAccount) {
@@ -81,11 +88,39 @@ class Siderbar extends Component {
         this.setState({ permission: permission });
     }
     getData = () => {
+        this._isMounted = true;
         getdataListAccount().then((res) => {
             if (res) {
+                if (this._isMounted) {
 
-                this.setState({ dataAccount: res })
+                    this.setState({ dataAccount: res })
+                }
                 this.isBcrypt(res)
+            }
+        })
+        getdataMessage().then((res) => {
+            const { tokenObj } = this.props;
+            if (res) {
+                if (this._isMounted) {
+
+
+                    let count = 0;
+
+                    res.forEach((message) => {
+                        const messageStatusArray = message.messageStatus.split(',');
+
+                        if (messageStatusArray.includes(tokenObj.id)) {
+                            count += 1;
+                        }
+                    });
+
+                    this.setState({
+                        dataMessage: res,
+                        countMessage: count,
+
+                    })
+                }
+
             }
         })
     }
@@ -113,19 +148,26 @@ class Siderbar extends Component {
         cookies.remove('loginObject', { path: '/' });
     }
     handleNotPermission = () => {
-       window.history.back()
-      
+        window.history.back()
+
         toast(<div className="advertise"><i className="fa fa-minus-circle" aria-hidden="true" />
             <i>Quyền hạn không đúng!</i></div>)
 
+
+    }
+    componentDidUpdate = (prevProps, prevState) => {
+        const { countMessage } = this.props;
+        if (countMessage!==prevProps.countMessage) {
+           this.getData()
+        }
     }
     isShowForm = () => {
         try {
-           
+
             // let profileCustomer = JSON.parse(localStorage.getItem('tokenProfileCustomer')) || null;
             const { tokenObj } = this.props;
             const { permission } = this.props;
-           
+            const { countMessage } = this.state;
             return (
 
                 <section id="sidebar" className={this.props.moreSiderbar || ''}>
@@ -142,7 +184,7 @@ class Siderbar extends Component {
 
 
 
-                    <ul className= 'side-menu top'  >
+                    <ul className='side-menu top'  >
                         <li >
                             <NavLink to="/" >
                                 <i className="bx bxs-dashboard" title='Tổng quan' />
@@ -150,10 +192,10 @@ class Siderbar extends Component {
                             </NavLink>
                         </li>
                         <li >
-                                <NavLink to="/warehouse">
-                                    <i className='bx bxs-home' title='Kho'></i>
-                                    <span className="text">Kho</span>
-                                </NavLink>
+                            <NavLink to="/warehouse">
+                                <i className='bx bxs-home' title='Kho'></i>
+                                <span className="text">Kho</span>
+                            </NavLink>
                             {/* {permission === 'Thành viên kho' || permission === 'Lãnh đạo' ?
                                 : <a onClick={() => this.handleNotPermission()} style={{ cursor: 'pointer' }}>
                                     <i className="bx bxs-home" title='Kho' />
@@ -169,7 +211,7 @@ class Siderbar extends Component {
                                 </NavLink>
 
 
-                               
+
                             }
                         </li>
                         <li  >
@@ -179,10 +221,10 @@ class Siderbar extends Component {
                             </NavLink>
                         </li>
                         <li  >
-                                <NavLink to="/member">
-                                    <i className='bx bxs-user' title='Thành viên'></i>
-                                    <span className="text">Thành viên</span>
-                                </NavLink>
+                            <NavLink to="/member">
+                                <i className='bx bxs-user' title='Thành viên'></i>
+                                <span className="text">Thành viên</span>
+                            </NavLink>
                             {/* {permission === 'Admin' || permission === 'Lãnh đạo' ?
 
                                 : <a onClick={() => this.handleNotPermission()} style={{ cursor: 'pointer' }}>
@@ -201,11 +243,11 @@ class Siderbar extends Component {
                         <li  >
                             {/* {permission === 'Admin' || permission === 'Lãnh đạo' ? */}
 
-                                <NavLink to="/category/items-list">
-                                    <i className='bx bxs-customize' title='Danh mục'></i>
-                                    <span className="text">Danh mục </span>
-                                </NavLink>
-                                {/* // : <a onClick={() => this.handleNotPermission()} style={{ cursor: 'pointer' }}>
+                            <NavLink to="/category/items-list">
+                                <i className='bx bxs-customize' title='Danh mục'></i>
+                                <span className="text">Danh mục </span>
+                            </NavLink>
+                            {/* // : <a onClick={() => this.handleNotPermission()} style={{ cursor: 'pointer' }}>
                                 //     <i className="bx bxs-customize" title='Danh mục' />
                                 //     <span className="text">Danh mục</span>
                                 // </a> */}
@@ -219,10 +261,16 @@ class Siderbar extends Component {
                         </li>
 
                         <li  >
-                            <a href="#Message">
-                                <i className="bx bxs-message-dots" title='Tin nhắn' />
+                            <NavLink to="/message">
+
+                                <i style={{ position: 'relative' }} className="bx bxs-message-dots" title='Tin nhắn' >
+                                    {countMessage > 0 &&
+
+                                        <span className='redMessage' >{countMessage}</span>
+                                    }
+                                </i>
                                 <span className="text">Tin Nhắn</span>
-                            </a>
+                            </NavLink>
                         </li>
 
                     </ul>
@@ -240,7 +288,7 @@ class Siderbar extends Component {
                             </a>
                         </li>
                     </ul>
-                </section>
+                </section >
             )
         }
         catch (error) {
@@ -266,15 +314,14 @@ class Siderbar extends Component {
 function mapStateToProps(state) {
     return {
         moreSiderbar: state.allReducer.moreSiderbar,
-        permission: state.allReducer.permission
+        permission: state.allReducer.permission,
+        countMessage: state.allReducer.countMessage,
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        // isSiderBar: (moreSiderbar) => {
-        //     dispatch({ type: 'StatusSiderBar', moreSiderbar })
-        // }
+       
     };
 }
 
