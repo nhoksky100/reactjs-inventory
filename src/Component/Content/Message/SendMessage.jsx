@@ -82,6 +82,7 @@ class SendMessage extends Component {
             ]);
             if (dataMember) {
                 if (this._isMounted) {
+                     console.log(dataMember,'dataMemberCDM')
                     this.setState({ dataMember: dataMember })
                 }
             }
