@@ -42,7 +42,7 @@ class SendMessage extends Component {
 
         Promise.all([this.getData()]).then(() => {
 
-            this.fetchDataMemberSelect();
+            // this.fetchDataMemberSelect();
         });
     }
     componentWillUnmount() {
@@ -81,8 +81,17 @@ class SendMessage extends Component {
         ]);
 
         if (dataMember && this._isMounted) {
-            console.log(dataMember,'dtMemberCDM')
-            this.setState({ dataMember });
+          
+        const filteredDataMemberArray = dataMember.filter(item => item.memberName !== memberName);
+        console.log(filteredDataMemberArray, 'filteredDataMemberArray');
+    
+        const options = filteredDataMemberArray.map(item => ({
+            value: item.memberName,
+            label: `${item.memberName} (${item.memberDepartment})`
+        }));
+    
+            this.setState({dataMember, memberNameOption: options });
+        
         }
 
         if (dataImage && this._isMounted) {
