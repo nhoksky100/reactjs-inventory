@@ -122,17 +122,17 @@ class SendMessage extends Component {
         const { memberName } = this.props;
 
         // const setDataMember = new Set();
-        const setDataMember = [];
-        dataMember.forEach(item => {
-            setDataMember.push(item.memberName);
-        });
+        // const setDataMember = [];
+        // dataMember.forEach(item => {
+        //     setDataMember.push(item.memberName);
+        // });
 
         // const setDataMemberArray = Array.from(setDataMember);
-        console.log(setDataMember,'setDataMember')
+        console.log(dataMember,'dataMember')
         // console.log(setDataMemberArray,'setDataMemberArray')
         // Filter out the memberName from props
-        const filteredDataMemberArray = setDataMember.filter(name => name !== memberName);
-
+        const filteredDataMemberArray = dataMember.filter(item => item.memberName !== memberName);
+  console.log(filteredDataMemberArray,'filteredDataMemberArray')
         const options = filteredDataMemberArray.map(name => {
             const item = dataMember.find(member => member.memberName === name);
             return {
