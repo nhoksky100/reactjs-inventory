@@ -228,7 +228,7 @@ class RequestHistoryInto extends Component {
         if (this._isMounted) {
             const filteredData = sortedData.filter(value => {
 
-                const pointApprove = value.orderPointApprove !== null ? value.orderPointApprove.split(',') : '';
+                const pointApprove =typeof value.orderPointApprove ==='string' && value.orderPointApprove !== null ? value.orderPointApprove.split(',') : '';
                 return !this.checkPermissionApprove(pointApprove, value)
             });
             this.props.getDataSearch(filteredData)
@@ -327,7 +327,7 @@ class RequestHistoryInto extends Component {
                 dataRequestHistory.forEach((history) => {
                     if (history.idHistory === requestIdHistory) {
                         // Lấy idRequests từ phần tử history và kiểm tra idRequest
-                        const idHistorys = history.idRequests !== null ? history.idRequests.split(',') : [];
+                        const idHistorys =typeof history.idRequests==='string' && history.idRequests !== null ? history.idRequests.split(',') : [];
 
                         if (idHistorys.includes(idRequest)) {
                             matchedIdHistory = history.idHistory;
@@ -423,8 +423,8 @@ class RequestHistoryInto extends Component {
             }
 
             return currentTodos.map((value, key) => {
-                const approveted = value.orderApprove !== null ? value.orderApprove.split(',') : ''
-                const pointApprove = value.orderPointApprove !== null ? value.orderPointApprove.split(',') : ''
+                const approveted = typeof value.orderApprove==='string' && value.orderApprove !== null ? value.orderApprove.split(',') : ''
+                const pointApprove = typeof value.orderPointApprove==='string' && value.orderPointApprove !== null ? value.orderPointApprove.split(',') : ''
                 return (
 
 
