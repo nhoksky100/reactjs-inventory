@@ -41,8 +41,6 @@ class SendMessage extends Component {
         this._isMounted = true;
 
         Promise.all([this.getData()]).then(() => {
-
-            // this.fetchDataMemberSelect();
         });
     }
     componentWillUnmount() {
@@ -82,15 +80,14 @@ class SendMessage extends Component {
 
         if (dataMember && this._isMounted) {
             const { memberName } = this.props || '';
-        const filteredDataMemberArray = dataMember.filter(item => item.memberName !== memberName);
-        console.log(filteredDataMemberArray, 'filteredDataMemberArray');
+            const filteredDataMemberArray = dataMember.filter(item => item.memberName !== memberName) || [];
+       
+            const options = filteredDataMemberArray.map(item => ({
+                value: item.memberName,
+                label: `${item.memberName} (${item.memberDepartment})`
+            }));
     
-        const options = filteredDataMemberArray.map(item => ({
-            value: item.memberName,
-            label: `${item.memberName} (${item.memberDepartment})`
-        }));
-    
-            this.setState({dataMember, memberNameOption: options });
+            this.setState({dataMember, memberNameOption: options || [] });
         
         }
 
@@ -114,30 +111,6 @@ class SendMessage extends Component {
 
     } catch (error) {
         console.error("Error in getData:", error);
-    }
-}
-
-fetchDataMemberSelect = async() => {
-    const { dataMember } = this.state;
-    const { memberName } = this.props;
-
-    if (!dataMember) {
-        console.error("dataMember is not available in state");
-        return;
-    }
-
-    console.log(dataMember, 'dataMember');
-
-    const filteredDataMemberArray = dataMember.filter(item => item.memberName !== memberName);
-    console.log(filteredDataMemberArray, 'filteredDataMemberArray');
-
-    const options = filteredDataMemberArray.map(item => ({
-        value: item.memberName,
-        label: `${item.memberName} (${item.memberDepartment})`
-    }));
-
-    if (this._isMounted) {
-        this.setState({ memberNameOption: options });
     }
 }
 
