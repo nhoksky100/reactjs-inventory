@@ -245,32 +245,32 @@ const FormAccountCustomer = () => {
                     } else {
                         return isToast();
                     }
-                case '/purchase-approved':
-                    if (permission === 'Lãnh đạo' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
+                case '/purchase/request-approved':
+                    if (permission === 'Lãnh đạo' || permission === 'Thành viên thu mua' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
                         return <PurchaseRequestListApproved tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/purchase-all':
-                    if (permission === 'Lãnh đạo' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
+                case '/purchase/request-all':
+                    if (permission === 'Lãnh đạo' || permission === 'Thành viên thu mua' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán')) {
                         return <PurchaseRequestListAll tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/purchase-into-warehouse':
-                    if (permission === 'Lãnh đạo' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán') || permission === 'Thành viên kho') {
+                case '/purchase/request-into-warehouse':
+                    if (permission === 'Lãnh đạo' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán') || permission === 'Thành viên thu mua') {
                         return <PurchaseIntoWarehouse tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/document':
-                    if (permission === 'Lãnh đạo' || permission === 'Admin') {
+                case '/purchase/document':
+                    if (permission === 'Lãnh đạo' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán') || permission === 'Thành viên thu mua') {
                         return <Document tokenObj={tokenObj} />;
                     } else {
                         return isToast();
                     }
-                case '/add-document':
-                    if (permission === 'Lãnh đạo' || permission === 'Admin') {
+                case '/purchase/add-document':
+                    if (permission === 'Lãnh đạo' || permission === 'Admin' || (permission === 'Trưởng phòng' && departmentState === 'Kế toán') || permission === 'Thành viên thu mua') {
                         return <AddDocument tokenObj={tokenObj} />;
                     } else {
                         return isToast();
