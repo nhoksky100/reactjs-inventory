@@ -335,7 +335,7 @@ class PurchaseRequestNotApprove extends Component {
         });
         const filteredData = sortedData.filter(value => {
 
-            const pointApprove = value.orderPointApprove !== null ? value.orderPointApprove.split(',') : '';
+            const pointApprove =typeof value.orderPointApprove==='string' && value.orderPointApprove !== null ? value.orderPointApprove.split(',') : '';
             return value.statusOrder === 'Chờ duyệt' && parseInt(pointApprove[0]) === 0
         });
         // const currentTodos = this.currentTodos(filteredData)
@@ -923,8 +923,8 @@ class PurchaseRequestNotApprove extends Component {
 
     renderActions = (row, rowIndex) => {
         const { permission } = this.state;
-        const approveted = row.orderApprove !== null ? row.orderApprove.split(',') : '';
-        const pointApprove = row.orderPointApprove !== null ? row.orderPointApprove.split(',') : '';
+        const approveted =typeof row.orderApprove==='string' &&  row.orderApprove !== null ? row.orderApprove.split(',') : '';
+        const pointApprove = typeof row.orderPointApprove==='string' && row.orderPointApprove !== null ? row.orderPointApprove.split(',') : '';
         const isMemberOrLeader = permission === 'Thành viên thu mua';
 
         return (
