@@ -41,8 +41,8 @@ class SendMessage extends Component {
         this._isMounted = true;
 
         Promise.all([this.getData()]).then(() => {
-            this.fetchDataMemberSelect();
 
+            this.fetchDataMemberSelect();
         });
     }
     componentWillUnmount() {
@@ -108,7 +108,7 @@ class SendMessage extends Component {
     }
 }
 
-fetchDataMemberSelect = () => {
+fetchDataMemberSelect = async() => {
     const { dataMember } = this.state;
     const { memberName } = this.props;
 
