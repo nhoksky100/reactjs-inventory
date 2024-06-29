@@ -451,7 +451,7 @@ class PurchaseRequestListApproved extends Component {
             const currentTodos = this.currentTodos(dataRequest)
             return currentTodos.map((value, key) => {
                 // const approveted = value.orderApprove !== null ? value.orderApprove.split(',') : ''
-                const pointApprove = value.orderPointApprove !== null ? value.orderPointApprove.split(',') : ''
+                const pointApprove =typeof value.orderPointApprove==='string' &&  value.orderPointApprove !== null ? value.orderPointApprove.split(',') : ''
 
 
                 return (
