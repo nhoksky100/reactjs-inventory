@@ -51,8 +51,7 @@ class SendMessage extends Component {
     componentDidUpdate(prevProps, prevState) {
 
         const { isNodeSend } = this.props;
-        // console.log(isNodeSend,'isNodeSend');
-        // console.log(prevProps.isNodeSend,'prevProps.isNodeSend');
+      
         if (isNodeSend) {
             const { idReceiver, messageDepartmentSend, messageNameSend, messageTitle } = this.props.dataReceive;
 
@@ -128,7 +127,7 @@ class SendMessage extends Component {
         });
 
         const setDataMemberArray = Array.from(setDataMember);
-
+        console.log(dataMember,'dataMember')
         // Filter out the memberName from props
         const filteredDataMemberArray = setDataMemberArray.filter(name => name !== memberName);
 
