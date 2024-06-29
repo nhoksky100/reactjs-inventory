@@ -707,8 +707,8 @@ class TransferExportApproved extends Component {
             const currentTodos = this.currentTodos(dataRequest)
             return currentTodos.map((value, key) => {
                 if (parseInt(value.requestTransferComplete) === 1 && value.requestTransferStatus === 'Đã duyệt') {
-                    const approveted = value.requestTransferApprove !== null ? value.requestTransferApprove.split(',') : ''
-                    const pointApprove = value.requestTransferPointApprove !== null ? value.requestTransferPointApprove.split(',') : ''
+                    const approveted = typeof value.requestTransferApprove==='string' && value.requestTransferApprove !== null ? value.requestTransferApprove.split(',') : ''
+                    const pointApprove = typeof value.requestTransferPointApprove==='string' && value.requestTransferPointApprove !== null ? value.requestTransferPointApprove.split(',') : ''
                     return (
                         <tr key={key} >
                             <td>
