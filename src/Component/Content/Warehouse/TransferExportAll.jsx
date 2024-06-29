@@ -415,7 +415,7 @@ class TransferExportAll extends Component {
                 dataRequestTransferHistory.forEach((history) => {
                     if (history.idHistory === requestIdHistory && parseInt(history.caseRequest) === 1) {
                         // Lấy idRequestTransfers từ phần tử history và kiểm tra idRequest
-                        const idHistorys = history.idRequestTransfers !== null ? history.idRequestTransfers.split(',') : [];
+                        const idHistorys =typeof history.idRequestTransfers==='string' && history.idRequestTransfers !== null ? history.idRequestTransfers.split(',') : [];
 
                         if (idHistorys.includes(idRequest)) {
                             matchedIdHistory = history.idHistory;
@@ -753,8 +753,8 @@ class TransferExportAll extends Component {
                 currentTodos = this.currentTodos(dataRequest)
             }
             return currentTodos.map((value, key) => {
-                const approveted = value.requestTransferApprove !== null ? value.requestTransferApprove.split(',') : ''
-                const pointApprove = value.requestTransferPointApprove !== null ? value.requestTransferPointApprove.split(',') : ''
+                const approveted = typeof value.requestTransferApprove==='string' && value.requestTransferApprove !== null ? value.requestTransferApprove.split(',') : ''
+                const pointApprove = typeof value.requestTransferPointApprove==='string' && value.requestTransferPointApprove !== null ? value.requestTransferPointApprove.split(',') : ''
                 return (
                     <tr key={key} >
                         {value.requestTransferStatus === 'Đã duyệt' || value.requestTransferStatus === 'Từ chối' ?
