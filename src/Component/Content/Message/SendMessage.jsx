@@ -82,7 +82,6 @@ class SendMessage extends Component {
             ]);
             if (dataMember) {
                 if (this._isMounted) {
-                     console.log(dataMember,'dataMemberCDM')
                     this.setState({ dataMember: dataMember })
                 }
             }
@@ -128,7 +127,8 @@ class SendMessage extends Component {
         });
 
         const setDataMemberArray = Array.from(setDataMember);
-        console.log(dataMember,'dataMember')
+        console.log(setDataMember,'setDataMember')
+        console.log(setDataMemberArray,'setDataMemberArray')
         // Filter out the memberName from props
         const filteredDataMemberArray = setDataMemberArray.filter(name => name !== memberName);
 
