@@ -81,7 +81,7 @@ class SendMessage extends Component {
         ]);
 
         if (dataMember && this._isMounted) {
-          
+            const { memberName } = this.props || '';
         const filteredDataMemberArray = dataMember.filter(item => item.memberName !== memberName);
         console.log(filteredDataMemberArray, 'filteredDataMemberArray');
     
