@@ -71,81 +71,65 @@ class SendMessage extends Component {
     }
 
 
-    getData = async () => {
-        this._isMounted = true;
-        try {
+   getData = async () => {
+    this._isMounted = true;
+    try {
+        const [dataMember, dataImage, dataMessage] = await Promise.all([
+            getDataMember(),
+            getDataImageProfile(),
+            getdataMessage()
+        ]);
 
-            const [dataMember, dataImage, dataMessage] = await Promise.all([
-                getDataMember(),
-                getDataImageProfile(),
-                getdataMessage()
-            ]);
-            if (dataMember) {
-                if (this._isMounted) {
-                    this.setState({ dataMember: dataMember })
-                }
-            }
-            if (dataImage) {
-
-                const { tokenObj } = this.props || ''
-                if (tokenObj) {
-
-                    dataImage.forEach((value) => {
-
-                        if (tokenObj.id === value.id) {
-                            if (this._isMounted) {
-                                this.setState({
-                                    // idImageProfile: value.id,
-                                    imageProfile: value.image,
-                                })
-                            }
-                            return;
-                        }
-                    });
-
-
-                }
-            }
-            if (dataMessage) {
-                if (this._isMounted) {
-                    this.setState({ dataMessage: dataMessage })
-                }
-            }
-
-        } catch (error) {
-
+        if (dataMember && this._isMounted) {
+            this.setState({ dataMember });
         }
+
+        if (dataImage && this._isMounted) {
+            const { tokenObj } = this.props || '';
+            if (tokenObj) {
+                dataImage.forEach((value) => {
+                    if (tokenObj.id === value.id) {
+                        this.setState({
+                            imageProfile: value.image,
+                        });
+                        return;
+                    }
+                });
+            }
+        }
+
+        if (dataMessage && this._isMounted) {
+            this.setState({ dataMessage });
+        }
+
+    } catch (error) {
+        console.error("Error in getData:", error);
+    }
+}
+
+fetchDataMemberSelect = () => {
+    const { dataMember } = this.state;
+    const { memberName } = this.props;
+
+    if (!dataMember) {
+        console.error("dataMember is not available in state");
+        return;
     }
 
-    fetchDataMemberSelect = () => {
-        const { dataMember } = this.state;
-        const { memberName } = this.props;
+    console.log(dataMember, 'dataMember');
 
-        // const setDataMember = new Set();
-        // const setDataMember = [];
-        // dataMember.forEach(item => {
-        //     setDataMember.push(item.memberName);
-        // });
+    const filteredDataMemberArray = dataMember.filter(item => item.memberName !== memberName);
+    console.log(filteredDataMemberArray, 'filteredDataMemberArray');
 
-        // const setDataMemberArray = Array.from(setDataMember);
-        console.log(dataMember,'dataMember')
-        // console.log(setDataMemberArray,'setDataMemberArray')
-        // Filter out the memberName from props
-        const filteredDataMemberArray = dataMember.filter(item => item.memberName !== memberName);
-  console.log(filteredDataMemberArray,'filteredDataMemberArray')
-        const options = filteredDataMemberArray.map(name => {
-            const item = dataMember.find(member => member.memberName === name);
-            return {
-                value: name,
-                label: `${name} (${item.memberDepartment})`
-            };
-        });
+    const options = filteredDataMemberArray.map(item => ({
+        value: item.memberName,
+        label: `${item.memberName} (${item.memberDepartment})`
+    }));
 
-        if (this._isMounted) {
-            this.setState({ memberNameOption: options });
-        }
+    if (this._isMounted) {
+        this.setState({ memberNameOption: options });
     }
-
+}
 
     randomIdSend = (data) => {
         let id = randomId();
